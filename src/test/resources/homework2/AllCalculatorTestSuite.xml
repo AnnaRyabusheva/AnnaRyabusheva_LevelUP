@@ -1,0 +1,9 @@
+<suite name="All Calculator Test Suite">
+
+  <test name="All Calculator Test">
+    <packages>
+      <package name="homework2"/>
+    </packages>
+  </test>
+
+</suite>
