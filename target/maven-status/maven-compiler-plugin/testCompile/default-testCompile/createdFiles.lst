@@ -1,7 +1,8 @@
 ru\levelp\at\homework2\CalculatorSumTest.class
 ru\levelp\at\homework2\DataProviderDataTestForAllTests.class
 ru\levelp\at\homework2\CalculatorBaseTest.class
-ru\levelp\at\homework2\CalculatorFuncTest.class
-ru\levelp\at\homework2\CalculatorSubTest.class
+ru\levelp\at\homework2\CalculatorSubtractTest.class
+ru\levelp\at\homework2\CalculatorFunctionTest.class
+ru\levelp\at\homework2\CalculatorAnotherTest.class
+ru\levelp\at\homework2\CalculatorMultiplyTest.class
 ru\levelp\at\homework2\CalculatorDivTest.class
-ru\levelp\at\homework2\CalculatorMultTest.class

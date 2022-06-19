@@ -85,6 +85,49 @@ public class DataProviderDataTestForAllTests {
     static Object[][] divDataPow() {
         return new Object[][] {
             {2, 2, 4},
+            {3, 2, 9},
+            {4, 2, 16}
+        };
+    }
+
+    @DataProvider
+    static Object[][] sqrlData() {
+        return new Object[][] {
+            {16, 4},
+            {9, 3},
+            {16, 4}
+        };
+    }
+
+    @DataProvider
+    static Object[][] tgData() {
+        return new Object[][] {
+            {30.0, 5.477225575051661},
+            {45.0, 6.708203932499369}
+        };
+    }
+
+    @DataProvider
+    static Object[][] ctgData() {
+        return new Object[][] {
+            {60, 7.745966692414834},
+            {45.0, 6.708203932499369}
+        };
+    }
+
+    @DataProvider
+    static Object[][] cosData() {
+        return new Object[][] {
+            {72, 8.48528137423857},
+            {85, 9.219544457292887}
+        };
+    }
+
+    @DataProvider
+    static Object[][] sinData() {
+        return new Object[][] {
+            {30.0, 5.477225575051661},
+            {61, 7.810249675906654}
         };
     }
 }

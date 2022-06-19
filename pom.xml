@@ -13,12 +13,16 @@
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
+    <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
     <checkstyle.version>9.3</checkstyle.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <testng.version>7.6.0</testng.version>
     <selenium-java.version>4.2.1</selenium-java.version>
     <aspectj.version>1.9.8</aspectj.version>
+
+
   </properties>
+
   <profiles>
     <profile>
       <id>homework1-all-calculator-test-suite</id>
@@ -27,6 +31,46 @@
       </activation>
       <properties>
         <suite.xml.name>${project.basedir}/src/test/resources/ru.levelp.at/homework2/AllCalculatorTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>homework1-another-calculator-test-suite</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/test/resources/ru.levelp.at/homework2/AnotherCalculatorTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>homework1-function-calculator-test-suite</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/test/resources/ru.levelp.at/homework2/FunctionCalculatorTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>homework1-sub-div-calculator-test-suite</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/test/resources/ru.levelp.at/homework2/SubAndDivCalculatorTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>homework1-sum-mult-calculator-test-suite</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/test/resources/ru.levelp.at/homework2/SumAndMultiplyCalculatorTestSuite.xml</suite.xml.name>
       </properties>
     </profile>
   </profiles>
@@ -89,7 +133,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.0.0-M5</version>
+        <version>${maven-surefire-plugin.version}</version>
         <configuration>
           <argLine>-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
           </argLine>

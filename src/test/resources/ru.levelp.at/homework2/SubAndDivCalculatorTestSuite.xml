@@ -1,8 +1,8 @@
-<suite name="Multiply and Div Calculator Test Suite">
+<suite name="Subtract and Div Calculator Test Suite">
 
-  <test name="Multiply Calculator Test">
+  <test name="Subtract Calculator Test">
     <classes>
-      <class name="ru.levelp.at.homework2.CalculatorMultTest"/>
+      <class name="ru.levelp.at.homework2.CalculatorSubtractTest"/>
 
     </classes>
   </test>
