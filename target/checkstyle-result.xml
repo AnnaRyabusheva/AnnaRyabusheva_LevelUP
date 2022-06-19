@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="9.3">
+<file name="D:\IdeaProjects\AnnaRyabusheva_LevelUP\src\test\java\ru\levelp\at\homework2\CalculatorBaseTest.java">
+</file>
+<file name="D:\IdeaProjects\AnnaRyabusheva_LevelUP\src\test\java\ru\levelp\at\homework2\CalculatorDivTest.java">
+</file>
+<file name="D:\IdeaProjects\AnnaRyabusheva_LevelUP\src\test\java\ru\levelp\at\homework2\CalculatorFuncTest.java">
+</file>
+<file name="D:\IdeaProjects\AnnaRyabusheva_LevelUP\src\test\java\ru\levelp\at\homework2\CalculatorMultTest.java">
+</file>
+<file name="D:\IdeaProjects\AnnaRyabusheva_LevelUP\src\test\java\ru\levelp\at\homework2\CalculatorSubTest.java">
+</file>
+<file name="D:\IdeaProjects\AnnaRyabusheva_LevelUP\src\test\java\ru\levelp\at\homework2\CalculatorSumTest.java">
+</file>
+<file name="D:\IdeaProjects\AnnaRyabusheva_LevelUP\src\test\java\ru\levelp\at\homework2\DataProviderDataTestForAllTests.java">
+</file>
+</checkstyle>

@@ -1,0 +1,245 @@
+<html>
+<head>
+<title>TestNG:  All Calculator Test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>All Calculator Test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>33/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Sun Jun 19 16:37:48 MSK 2022</td>
+</tr>
+<tr><td>Total time:</td><td>0 seconds (327 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorDivTest.calculatorDivTest()'><b>calculatorDivTest</b><br>Test class: ru.levelp.at.homework2.CalculatorDivTest<br>Parameters: 100, 2, 50</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorDivTest@c430e6c</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorSubTest.calculatorSubTest()'><b>calculatorSubTest</b><br>Test class: ru.levelp.at.homework2.CalculatorSubTest<br>Parameters: 15, 2, 13</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorSubTest@25df00a0</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorMultTest.calculatorMultiplyTest()'><b>calculatorMultiplyTest</b><br>Test class: ru.levelp.at.homework2.CalculatorMultTest<br>Parameters: 9.7, 1, 9.0</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorMultTest@c05fddc</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorSubTest.calculatorSubTest()'><b>calculatorSubTest</b><br>Test class: ru.levelp.at.homework2.CalculatorSubTest<br>Parameters: 69.876, 12.5267, 57.34930000000001</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorSubTest@25df00a0</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorMultTest.calculatorMultiplyTest()'><b>calculatorMultiplyTest</b><br>Test class: ru.levelp.at.homework2.CalculatorMultTest<br>Parameters: 56.2548, 34.2587, 1927.0</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorMultTest@c05fddc</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorMultTest.calculatorMultiplyTest()'><b>calculatorMultiplyTest</b><br>Test class: ru.levelp.at.homework2.CalculatorMultTest<br>Parameters: 8, 1, 8</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorMultTest@c05fddc</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorDivTest.calculatorDivDoubleTest()'><b>calculatorDivDoubleTest</b><br>Test class: ru.levelp.at.homework2.CalculatorDivTest<br>Parameters: 33.6, 5.6, 6.000000000000001</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorDivTest@c430e6c</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorSubTest.calculatorSubTest()'><b>calculatorSubTest</b><br>Test class: ru.levelp.at.homework2.CalculatorSubTest<br>Parameters: 12, 4, 8</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorSubTest@25df00a0</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorSumTest.calculatorSumTest()'><b>calculatorSumTest</b><br>Test class: ru.levelp.at.homework2.CalculatorSumTest<br>Parameters: 8, 1, 9</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorSumTest@4d15107f</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorDivTest.calculatorDivTest()'><b>calculatorDivTest</b><br>Test class: ru.levelp.at.homework2.CalculatorDivTest<br>Parameters: 18, 2, 9</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorDivTest@c430e6c</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorDivTest.calculatorDivDoubleTest()'><b>calculatorDivDoubleTest</b><br>Test class: ru.levelp.at.homework2.CalculatorDivTest<br>Parameters: 100, 2.5, 40</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorDivTest@c430e6c</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorSumTest.calculatorSumTest()'><b>calculatorSumTest</b><br>Test class: ru.levelp.at.homework2.CalculatorSumTest<br>Parameters: 6, 5, 11</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorSumTest@4d15107f</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorMultTest.calculatorMultiplyTest()'><b>calculatorMultiplyTest</b><br>Test class: ru.levelp.at.homework2.CalculatorMultTest<br>Parameters: 6, 5, 30</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorMultTest@c05fddc</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorSubTest.calculatorSubTest()'><b>calculatorSubTest</b><br>Test class: ru.levelp.at.homework2.CalculatorSubTest<br>Parameters: 8, 1, 7</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorSubTest@25df00a0</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorDivTest.calculatorDivDoubleTest()'><b>calculatorDivDoubleTest</b><br>Test class: ru.levelp.at.homework2.CalculatorDivTest<br>Parameters: 12.8, 4.2, 3.0476190476190474</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorDivTest@c430e6c</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorFuncTest.calculatorFunTest()'><b>calculatorFunTest</b><br>Test class: ru.levelp.at.homework2.CalculatorFuncTest<br>Parameters: 2, 2, 4</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorFuncTest@4d14b6c2</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorMultTest.calculatorMultiplyTest()'><b>calculatorMultiplyTest</b><br>Test class: ru.levelp.at.homework2.CalculatorMultTest<br>Parameters: 6.2, 5.8, 35.0</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorMultTest@c05fddc</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorSumTest.calculatorSumTest()'><b>calculatorSumTest</b><br>Test class: ru.levelp.at.homework2.CalculatorSumTest<br>Parameters: 2, 4, 6</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorSumTest@4d15107f</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorSumTest.calculatorSumTest()'><b>calculatorSumTest</b><br>Test class: ru.levelp.at.homework2.CalculatorSumTest<br>Parameters: 9, 14, 23</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorSumTest@4d15107f</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorDivTest.exceptionTesting()'><b>exceptionTesting</b><br>Test class: ru.levelp.at.homework2.CalculatorDivTest</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorDivTest@c430e6c</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorSubTest.calculatorSubTest()'><b>calculatorSubTest</b><br>Test class: ru.levelp.at.homework2.CalculatorSubTest<br>Parameters: 6, 5, 1</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorSubTest@25df00a0</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorSumTest.calculatorSumDoubleTest()'><b>calculatorSumDoubleTest</b><br>Test class: ru.levelp.at.homework2.CalculatorSumTest<br>Parameters: 8.5, 2.3, 10.8</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorSumTest@4d15107f</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorDivTest.calculatorDivTest()'><b>calculatorDivTest</b><br>Test class: ru.levelp.at.homework2.CalculatorDivTest<br>Parameters: 12, 4, 3</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorDivTest@c430e6c</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorDivTest.calculatorDivDoubleTest()'><b>calculatorDivDoubleTest</b><br>Test class: ru.levelp.at.homework2.CalculatorDivTest<br>Parameters: 25.2, 2.5, 10.08</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorDivTest@c430e6c</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorMultTest.calculatorMultiplyTest()'><b>calculatorMultiplyTest</b><br>Test class: ru.levelp.at.homework2.CalculatorMultTest<br>Parameters: 2, 4, 8</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorMultTest@c05fddc</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorSumTest.calculatorSumDoubleTest()'><b>calculatorSumDoubleTest</b><br>Test class: ru.levelp.at.homework2.CalculatorSumTest<br>Parameters: 9.78, 58.563, 68.343</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorSumTest@4d15107f</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorSumTest.calculatorSumDoubleTest()'><b>calculatorSumDoubleTest</b><br>Test class: ru.levelp.at.homework2.CalculatorSumTest<br>Parameters: 1.9, 25.8, 27.7</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorSumTest@4d15107f</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorDivTest.exceptionDoubleTesting()'><b>exceptionDoubleTesting</b><br>Test class: ru.levelp.at.homework2.CalculatorDivTest</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorDivTest@c430e6c</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorMultTest.calculatorMultiplyTest()'><b>calculatorMultiplyTest</b><br>Test class: ru.levelp.at.homework2.CalculatorMultTest<br>Parameters: 15, 2, 30</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorMultTest@c05fddc</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorSubTest.calculatorSubTest()'><b>calculatorSubTest</b><br>Test class: ru.levelp.at.homework2.CalculatorSubTest<br>Parameters: 12.8, 4.7, 8.100000000000001</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorSubTest@25df00a0</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorSubTest.calculatorSubTest()'><b>calculatorSubTest</b><br>Test class: ru.levelp.at.homework2.CalculatorSubTest<br>Parameters: 61.52, 32.89, 28.630000000000003</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorSubTest@25df00a0</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorDivTest.calculatorDivTest()'><b>calculatorDivTest</b><br>Test class: ru.levelp.at.homework2.CalculatorDivTest<br>Parameters: 30, 5, 6</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorDivTest@c430e6c</td></tr>
+<tr>
+<td title='ru.levelp.at.homework2.CalculatorMultTest.calculatorMultiplyTest()'><b>calculatorMultiplyTest</b><br>Test class: ru.levelp.at.homework2.CalculatorMultTest<br>Parameters: 2.5, 4.2, 10.0</td>
+<td></td>
+<td>0</td>
+<td>ru.levelp.at.homework2.CalculatorMultTest@c05fddc</td></tr>
+</table><p>
+</body>
+</html>
