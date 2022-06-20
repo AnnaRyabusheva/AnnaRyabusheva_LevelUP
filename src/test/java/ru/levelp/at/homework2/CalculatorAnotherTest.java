@@ -13,7 +13,7 @@ public class CalculatorAnotherTest extends CalculatorBaseTest {
         assertEquals(actual, expected);
     }
 
-    @Test(dataProviderClass = DataProviderDataTestForAllTests.class, dataProvider = "sqrlData")
+    @Test(dataProviderClass = DataProviderDataTestForAllTests.class, dataProvider = "sqrtData")
     public void calculatorSqrtTest(double a, double expected) {
 
         double actual = calculator.sqrt(a);

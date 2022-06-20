@@ -91,7 +91,7 @@ public class DataProviderDataTestForAllTests {
     }
 
     @DataProvider
-    static Object[][] sqrlData() {
+    static Object[][] sqrtData() {
         return new Object[][] {
             {16, 4},
             {9, 3},
