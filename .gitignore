@@ -1,6 +1,6 @@
-/target/
-/shelf/
-/workspace.xml
-/.idea/workspace.xml
-/.iml
-/.idea
+target/
+shelf/
+workspace.xml
+.idea/workspace.xml
+.iml
+.idea
