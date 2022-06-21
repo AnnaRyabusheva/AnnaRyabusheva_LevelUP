@@ -19,6 +19,7 @@
     <testng.version>7.6.0</testng.version>
     <selenium-java.version>4.2.1</selenium-java.version>
     <aspectj.version>1.9.8</aspectj.version>
+    <webdrivermanager.version>5.2.0</webdrivermanager.version>
 
 
   </properties>
@@ -87,8 +88,15 @@
       <version>1.0</version>
       <scope>system</scope>
       <systemPath>${basedir}/.lib/calculator-1.0.jar</systemPath>
-
     </dependency>
+
+    <dependency>
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>webdrivermanager</artifactId>
+      <version>${webdrivermanager.version}</version>
+      <scope>test</scope>
+    </dependency>
+
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
