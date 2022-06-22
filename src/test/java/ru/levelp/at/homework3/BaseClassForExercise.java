@@ -2,6 +2,7 @@ package ru.levelp.at.homework3;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.time.Duration;
+import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -14,12 +15,13 @@ public class BaseClassForExercise {
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(80));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4000));
         driver.manage().window().maximize();
     }
+    SoftAssertions softly = new SoftAssertions();
 
-    //    @AfterMethod
-    //    public void tearDown() {
-    //        driver.quit();
-    //    }
+        @AfterMethod
+        public void tearDown() {
+            driver.quit();
+        }
 }

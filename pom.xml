@@ -20,6 +20,7 @@
     <selenium-java.version>4.2.1</selenium-java.version>
     <aspectj.version>1.9.8</aspectj.version>
     <webdrivermanager.version>5.2.0</webdrivermanager.version>
+    <assertj-core.version>3.23.1</assertj-core.version>
 
 
   </properties>
@@ -76,13 +77,14 @@
     </profile>
   </profiles>
   <dependencies>
+
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
       <version>${selenium-java.version}</version>
     </dependency>
-    <dependency>
 
+    <dependency>
       <groupId>com.roufid.tutorials</groupId>
       <artifactId>example-app</artifactId>
       <version>1.0</version>
@@ -101,6 +103,13 @@
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
       <version>${testng.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>${assertj-core.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
