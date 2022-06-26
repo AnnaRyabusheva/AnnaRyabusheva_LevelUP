@@ -1,6 +1,6 @@
 package ru.levelp.at.homework3;
 
-import java.awt.DisplayMode;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -49,9 +49,13 @@ public class Exercise1Test extends BaseClassForExercise {
             "//div[@class=\"container--3QXHv\"]//input[@class=\"container--H9L5q size_s--3_M-_\"]"));
         tem.click();
         tem.sendKeys("Тестовое письмо");
-        WebElement body = driver.findElement(By.xpath("//div[@role=\"textbox\"]"));
+        WebElement bodyOsn=driver.findElement(By.xpath("//div[@class=\"editor_container--3Rj-8\"]"));
+        bodyOsn.click();
+        WebElement body = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div/div/div[2]/div[3]/div[5]/div/div/div[2]"));//div[@class="editable-d0gu cke_editable cke_editable_inline cke_contents_true cke_show_borders cke_focus"]
         body.click();
-        body.sendKeys("Первое мое письмо для автотеста");
+        WebElement body2 = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div/div/div[2]/div[3]/div[5]/div/div/div[2]/div[1]/div[1]/br"));
+        body2.sendKeys("Первое мое письмо для автотеста");
+//        body.sendKeys("");
 
         //        4.	Сохранить его как черновик
         WebElement buttonSave = driver.findElement(By.xpath("//div//button[@data-test-id=\"save\"]"));
@@ -66,8 +70,7 @@ public class Exercise1Test extends BaseClassForExercise {
         korzina.click();
 
         WebElement verifyKorzina = driver.findElement(By.xpath(
-            "//span[contains(@class, \"ll-sp__normal\") and text()=\"Первое письмо для автотеста-- "
-                + "Ира Иванова Отправлено из Почты Mail.ru\"]"));
+            "//span[contains(@class, \"ll-sp__normal\") and text()=\"Первое мое письмо для автотеста -- Ира Иванова Отправлено из Почты Mail.ru\"]"));
         verifyKorzina.isDisplayed();
 
         //        6.	Verify контент, адресата и тему письма (должно совпадать с пунктом 3)}
@@ -114,6 +117,8 @@ public class Exercise1Test extends BaseClassForExercise {
         WebElement otpravlevoe=driver.findElement(By.xpath("//span[contains(@class, \"ll-sp__normal\") and "
             + "text()=\"Первое письмо для автотеста -- Ира Иванова Отправлено из Почты Mail.ru\"]"));
         otpravlevoe.isDisplayed();
+
+        //        10.	 Выйти из учётной записи
 
         softly.assertAll();
     }
