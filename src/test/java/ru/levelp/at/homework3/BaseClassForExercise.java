@@ -18,7 +18,7 @@ public class BaseClassForExercise {
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4000));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(400));
         driver.manage().window().maximize();
 
         driver.navigate().to("https://mail.ru/");
