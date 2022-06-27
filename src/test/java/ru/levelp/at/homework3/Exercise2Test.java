@@ -32,11 +32,24 @@ public class Exercise2Test extends BaseClassForExercise {
             "//div[@class=\"container--3QXHv\"]//input[@class=\"container--H9L5q size_s--3_M-_\"]"));
         tem.click();
         tem.sendKeys("Тестовое письмо");
+        WebElement postField = driver.findElement(By.xpath("//div[contains(@class, 'editable-container')]/div/div"));
+        postField.sendKeys("АААААА найдись поле блин");
+
+        //4.	Отправить письмо
+        WebElement buttonSent= driver.findElement(By.xpath("//div[contains(@class, 'footer')]/div/div/div[@data-test-id=\"underlay-wrapper\"]"));
+        buttonSent.click();
+
+        //5.	Verify, что письмо появилось в папке отправленные
+
+        String  letterU= driver.findElement(By.xpath("//span[contains(@class, \"ll-sp__normal\") and text()=\"АААААА найдись поле блин -- Ира Иванова Отправлено из Почты Mail.ru\"]")).getText();
+        softly.assertThat(letterU).contains("АААААА найдись поле блин -- Ира Иванова Отправлено из Почты Mail.ru");
+
+
         softly.assertAll();
     }
 
-    //4.	Отправить письмо
-    //5.	Verify, что письмо появилось в папке отправленные
+
+
     //6.	Verify, что письмо появилось в папке «Тест»
     //7.	Verify контент, адресата и тему письма (должно совпадать с пунктом 3)
     //8.	Выйти из учётной записи

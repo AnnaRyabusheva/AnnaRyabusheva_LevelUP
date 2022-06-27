@@ -9,17 +9,17 @@ public class Exercise1Test extends BaseClassForExercise {
     @Test
     public void loginInMail() {
 
-        //        //        1.	Войти в почту
+        //1.	Войти в почту
 
-        //        2.	Assert, что вход выполнен успешно
+        //2.	Assert, что вход выполнен успешно
 
         WebElement buttonClicK = driver.findElement(By.xpath("//*[@id=\"ph-whiteline\"]/div/div[2]/div[2]"));
         buttonClicK.click();
         String txtUserName = driver.findElement(By.xpath("//*[@aria-label=\"Ира Иванова\"]")).getText();
         softly.assertThat(txtUserName).isEqualTo("Ира Иванова");
 
-        //        //        3.	Создать новое письмо (заполнить адресата, тему письма и тело)
-        //
+        //3.	Создать новое письмо (заполнить адресата, тему письма и тело)
+
         WebElement composBut = driver.findElement(By.xpath(
             "//*[@id=\"app-canvas\"]/div/div[1]/div[1]/div/div[2]/span/div[1]/div[1]/div/div/div/div[1]/div/div/a"));
         composBut.click();
@@ -32,46 +32,32 @@ public class Exercise1Test extends BaseClassForExercise {
         tem.click();
         tem.sendKeys("Тестовое письмо");
 
-        //        WebElement postField =driver.findElement(By.xpath("//div[@class=\"editor_container--3Rj-8\"]/*//div[@class=\"editable-container-xvph\"]/*//div"));
-        //        postField.click();
-        //        WebElement postField2 = driver.findElement(By.xpath("//*[@class=\"compose-app compose-app_fix compose-app_popup compose-app_window compose-app_fixed\"]/*//div[@class=\"editable-d0gu cke_editable cke_editable_inline cke_contents_true cke_show_borders cke_focus\"]"));
-        //        postField2.sendKeys("АААААА найдись поле блин");//div[@class=\"editable-q092 cke_editable cke_editable_inline cke_contents_true cke_show_borders cke_focus\"]
+        WebElement postField = driver.findElement(By.xpath("//div[contains(@class, 'editable-container')]/div/div"));
+        postField.sendKeys("АААААА найдись поле блин");
 
-        //        WebElement bodyOsn=driver.findElement(By.xpath("//div[@class=\"editor_container--3Rj-8\"]"));
-        //        bodyOsn.click();
-        //        WebElement body = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div/div/div[2]/div[3]/div[5]/div/div/div[2]"));//div[@class="editable-d0gu cke_editable cke_editable_inline cke_contents_true cke_show_borders cke_focus"]
-        //        body.click();
-        //        WebElement body2 = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div/div/div[2]/div[3]/div[5]/div/div/div[2]/div[1]/div[1]/br"));
-        //        body2.sendKeys("Первое мое письмо для автотеста");
-        ////        body.sendKeys("");
-        //
         //        4.	Сохранить его как черновик
         WebElement buttonSave = driver.findElement(By.xpath(
-            "/html/body/div[1]/div/div[2]/div/div/div/div[3]/div[1]/div[2]/div/button"));//div//button[@data-test-id="save"]
+            "/html/body/div[1]/div/div[2]/div/div/div/div[3]/div[1]/div[2]/div/button"));
         buttonSave.click();
         WebElement close = driver.findElement(By.xpath("//div//button[@title=\"Закрыть\"]"));
         close.click();
-        //
+
         //        //        5.	Verify, что письмо сохранено в черновиках
-        //
+
         WebElement korzina = driver.findElement(
             By.xpath("//div[contains(@class, \"nav__folder-name__txt\") and text()=\"Черновики\"]"));
         korzina.click();
         //
         String verifyKorzina = driver.findElement(By.xpath(
-                                         " //*[@id=\"app-canvas\"]/*//span[contains(@class, \"ll-sp__normal\") and text()=\"АААААА найдись поле блин -- Ира Иванова Отправлено из Почты Mail.ru\"]  "))
-                                     .getText();//span[contains(@class, "ll-sp__normal") and text()="АААААА найдись поле блин -- Ира Иванова Отправлено из Почты Mail.ru"]
+                                         " //*[@id=\"app-canvas\"]/*//span[contains(@class, \"ll-sp__normal\") "
+                                             + "and text()=\"АААААА найдись поле блин -- Ира"
+                                             + " Иванова Отправлено из Почты Mail.ru\"]  "))
+                                     .getText();
         softly.assertThat(verifyKorzina)
               .contains("АААААА найдись поле блин -- Ира Иванова Отправлено из Почты Mail.ru");
-        //        verifyKorzina.isDisplayed();
-        //
-        //        //        6.	Verify контент, адресата и тему письма (должно совпадать с пунктом 3)}
-        ////        String titleLetter = driver.findElement(By.xpath("//span[contains(@class, 'll-sp__normal') and text()=\"Первое мое письмо для автотеста -- Ира Иванова Отправлено из Почты Mail.ru\"]"))
-        //////                                       "//span[contains(@class, \"ll-sp__normal\") and text()=\"Первое письмо "
-        //////                                           + "для автотеста -- Ира Иванова Отправлено из Почты Mail.ru\"]"))
-        ////                                   .getText();
-        ////        softly.assertThat(titleLetter)
-        ////              .isEqualTo("Первое письмо для автотеста -- Ира Иванова Отправлено из Почты Mail.ru");
+
+        //6.	Verify контент, адресата и тему письма (должно совпадать с пунктом 3)}
+
         String adressLetter = driver.findElement(By.xpath(
                                         "//span[@title=\"irushik1981@mail.ru\"]"))
                                     .getText();
@@ -84,41 +70,36 @@ public class Exercise1Test extends BaseClassForExercise {
                                         .getText();
         softly.assertThat(otpravitelLetter)
               .isEqualTo("Тестовое письмо");
-        //
+
         //        //        7.	Отправить письмо
         WebElement sendLetter = driver.findElement(
             By.xpath(
-                "//span[contains(@class,\"ll-sp__normal\") and text()=\"АААААА найдись поле блин -- Ира Иванова Отправлено из Почты Mail.ru\"]"));
+                "//span[contains(@class,\"ll-sp__normal\") and text()=\"АААААА найдись поле блин -- "
+                    + "Ира Иванова Отправлено из Почты Mail.ru\"]"));
         sendLetter.click();
         WebElement sendButton = driver.findElement(By.xpath("//button[@data-test-id=\"send\"]"));
         sendButton.click();
-        //
-        //        //        8.	Verify, что письмо исчезло из черновиков
-        //        driver.navigate().refresh();
-        //        WebElement sendLetterwo = driver.findElement(
-        //            By.xpath("//span[contains(@class,\"ll-sp__normal\") and text()=\"АААААА найдись поле блин -- Ира Иванова Отправлено из Почты Mail.ru\"]"));
-        //        softly.assertThat(sendLetterwo.isDisplayed()).isFalse();
-        //        WebElement vhod = driver.findElement(By.xpath("//*[@id=\"sideBarContent\"]/div/nav/a[1]/div/div[2]/div"));
-        //        vhod.click();
-        //
-        //        //        9.	Verify, что письмо появилось в папке отправленные
-        WebElement otpr = driver.findElement(By.xpath("//a[@href=\"/sent/\"]"));
+
+        //8.	Verify, что письмо исчезло из черновиков
+
+        //9.	Verify, что письмо появилось в папке отправленные
+        WebElement otpr = driver.findElement(By.xpath("//*[@id=\"sideBarContent\"]/div/nav/a[6]"));//a[@href="/sent/"]
         otpr.click();
 
         WebElement otpravlevoe = driver.findElement(By.xpath("//span[contains(@class, \"ll-sp__normal\") and "
             + "text()=\"АААААА найдись поле блин -- Ира Иванова Отправлено из Почты Mail.ru\"]"));
         otpravlevoe.isDisplayed();
-        //
-        //        //        10.	 Выйти из учётной записи
 
-//        WebElement buttonClicK = driver.findElement(By.xpath("//*[@id=\"ph-whiteline\"]/div/div[2]/div[2]"));
+        //10.	 Выйти из учётной записи
+
         buttonClicK.click();
         WebElement buttonExit = driver.findElement(By.xpath(
-            "//div[@class=\"ph-sidebar svelte-3hgv3e\"]/*//div[@class=\"ph-item ph-item__hover-active svelte-6ia8p0\"]"));
+            "//div[@class=\"ph-sidebar svelte-3hgv3e\"]/*//div[@class=\"ph-item "
+                + "ph-item__hover-active svelte-6ia8p0\"]"));
         buttonExit.click();
 
         softly.assertAll();
     }
 }
 
-//        10.	 Выйти из учётной записи
+
