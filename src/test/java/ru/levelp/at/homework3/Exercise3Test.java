@@ -32,7 +32,7 @@ public class Exercise3Test extends BaseClassForExercise {
         driver.findElement(
             By.xpath("//div[contains(@class, 'footer')]/div/div/div[@data-test-id=\"underlay-wrapper\"]")).click();
 
-        driver.findElement(By.xpath("//body")).sendKeys(Keys.ESCAPE);
+//        driver.findElement(By.xpath("//body")).sendKeys(Keys.ESCAPE);
 
         //5.Verify, что письмо появилось в папке Входящие
 
@@ -65,8 +65,8 @@ public class Exercise3Test extends BaseClassForExercise {
 
         //7.Удалить письмо
 
-        driver.findElement(By.xpath("//span[contains(@class,\"ll-sj__normal\") and text()=\"Второе письмо\"]"))
-              .click();//span[@title="Ира Иванова <irushik1981@mail.ru>"]
+        driver.findElement(By.xpath("//span[@title=\"Ира Иванова <irushik1981@mail.ru>\"]"))
+              .click();
         driver.findElement(By.xpath("//span[contains(@class, \"button2__txt\") and text()=\"Удалить\"]")).click();
 
         //8.Verify что письмо появилось в папке Корзина
