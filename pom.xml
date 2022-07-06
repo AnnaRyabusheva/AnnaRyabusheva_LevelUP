@@ -26,10 +26,21 @@
   </properties>
 
   <profiles>
+
+    <profile>
+      <id>homework3-all-exercise-test-suite</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/test/resources/ru.levelp.at.homework3/AllExerciseForHW3TestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
     <profile>
       <id>homework1-all-calculator-test-suite</id>
       <activation>
-        <activeByDefault>true</activeByDefault>
+        <activeByDefault>false</activeByDefault>
       </activation>
       <properties>
         <suite.xml.name>${project.basedir}/src/test/resources/ru.levelp.at/homework2/AllCalculatorTestSuite.xml</suite.xml.name>

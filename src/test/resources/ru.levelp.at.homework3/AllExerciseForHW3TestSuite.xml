@@ -1,0 +1,9 @@
+<suite name="All Exercise For HW 3 Test Suit">
+
+  <test name="All Exercise For HW 3 Test">
+    <packages>
+      <package name="ru.levelp.at.homework3"/>
+    </packages>
+  </test>
+
+</suite>

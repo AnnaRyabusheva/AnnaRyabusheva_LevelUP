@@ -9,20 +9,13 @@ public class Exercise1Test extends BaseClassForExercise {
     @Test
     public void loginInMail() {
 
-        //1.	Войти в почту
+        //1.Войти в почту: выполнено в базовом классе
+        //2.Assert, что вход выполнен успешно: выполненно в базовом классе
 
-        //2.	Assert, что вход выполнен успешно
+        //3.Создать новое письмо (заполнить адресата, тему письма и тело)
 
-        WebElement buttonClicK = driver.findElement(By.xpath("//*[@id=\"ph-whiteline\"]/div/div[2]/div[2]"));
-        buttonClicK.click();
-        String txtUserName = driver.findElement(By.xpath("//*[@aria-label=\"Ира Иванова\"]")).getText();
-        softly.assertThat(txtUserName).isEqualTo("Ира Иванова");
-
-        //3.	Создать новое письмо (заполнить адресата, тему письма и тело)
-
-        WebElement composBut = driver.findElement(By.xpath(
-            "//*[@id=\"app-canvas\"]/div/div[1]/div[1]/div/div[2]/span/div[1]/div[1]/div/div/div/div[1]/div/div/a"));
-        composBut.click();
+        driver.findElement(By.xpath(
+            "//span[contains(@class, \"compose-button__txt\") and text()=\"Написать письмо\"]")).click();
         WebElement to = driver.findElement((By.xpath("//div[@class=\"input--3slxg\"]")));
         to.click();
         WebElement colum = driver.findElement(By.xpath("//input[@type=\"text\"]"));
@@ -33,16 +26,17 @@ public class Exercise1Test extends BaseClassForExercise {
         tem.sendKeys("Тестовое письмо");
 
         WebElement postField = driver.findElement(By.xpath("//div[contains(@class, 'editable-container')]/div/div"));
-        postField.sendKeys("АААААА найдись поле блин");
+        postField.sendKeys("Поле тело письма заполнено. Первое задание.");
 
-        //        4.	Сохранить его как черновик
-        WebElement buttonSave = driver.findElement(By.xpath(
-            "/html/body/div[1]/div/div[2]/div/div/div/div[3]/div[1]/div[2]/div/button"));
-        buttonSave.click();
+        //4.Сохранить его как черновик
+
+        driver.findElement(By.xpath(
+            "//button[@data-test-id=\"save\"]")).click();
+
         WebElement close = driver.findElement(By.xpath("//div//button[@title=\"Закрыть\"]"));
         close.click();
 
-        //        //        5.	Verify, что письмо сохранено в черновиках
+        //5.Verify, что письмо сохранено в черновиках
 
         WebElement korzina = driver.findElement(
             By.xpath("//div[contains(@class, \"nav__folder-name__txt\") and text()=\"Черновики\"]"));
@@ -50,20 +44,20 @@ public class Exercise1Test extends BaseClassForExercise {
         //
         String verifyKorzina = driver.findElement(By.xpath(
                                          " //*[@id=\"app-canvas\"]/*//span[contains(@class, \"ll-sp__normal\") "
-                                             + "and text()=\"АААААА найдись поле блин -- Ира"
+                                             + "and text()=\"Поле тело письма заполнено. Первое задание. -- Ира"
                                              + " Иванова Отправлено из Почты Mail.ru\"]  "))
                                      .getText();
         softly.assertThat(verifyKorzina)
-              .contains("АААААА найдись поле блин -- Ира Иванова Отправлено из Почты Mail.ru");
+              .contains("Поле тело письма заполнено. Первое задание. -- Ира Иванова Отправлено из Почты Mail.ru");
 
-        //6.	Verify контент, адресата и тему письма (должно совпадать с пунктом 3)}
+        //6.Verify контент, адресата и тему письма (должно совпадать с пунктом 3)}
 
         String adressLetter = driver.findElement(By.xpath(
                                         "//span[@title=\"irushik1981@mail.ru\"]"))
                                     .getText();
         softly.assertThat(adressLetter)
               .isEqualTo("irushik1981@mail.ru");
-        //
+
         String otpravitelLetter = driver.findElement(By.xpath(
                                             "//span[contains(@class, \"ll-sj__normal\") "
                                                 + "and text()=\"Тестовое письмо\"]"))
@@ -71,32 +65,25 @@ public class Exercise1Test extends BaseClassForExercise {
         softly.assertThat(otpravitelLetter)
               .isEqualTo("Тестовое письмо");
 
-        //        //        7.	Отправить письмо
+        //7.Отправить письмо
         WebElement sendLetter = driver.findElement(
             By.xpath(
-                "//span[contains(@class,\"ll-sp__normal\") and text()=\"АААААА найдись поле блин -- "
+                "//span[contains(@class,\"ll-sp__normal\") and text()=\"Поле тело письма заполнено. Первое задание. -- "
                     + "Ира Иванова Отправлено из Почты Mail.ru\"]"));
         sendLetter.click();
         WebElement sendButton = driver.findElement(By.xpath("//button[@data-test-id=\"send\"]"));
         sendButton.click();
 
-        //8.	Verify, что письмо исчезло из черновиков
+        //8.Verify, что письмо исчезло из черновиков
 
-        //9.	Verify, что письмо появилось в папке отправленные
-        WebElement otpr = driver.findElement(By.xpath("//*[@id=\"sideBarContent\"]/div/nav/a[6]"));//a[@href="/sent/"]
-        otpr.click();
+        //9.Verify, что письмо появилось в папке отправленные
+        driver.findElement(By.xpath("//a[@href=\"/sent/\"]")).click();
 
-        WebElement otpravlevoe = driver.findElement(By.xpath("//span[contains(@class, \"ll-sp__normal\") and "
-            + "text()=\"АААААА найдись поле блин -- Ира Иванова Отправлено из Почты Mail.ru\"]"));
-        otpravlevoe.isDisplayed();
+        WebElement sentLetter = driver.findElement(By.xpath("//span[contains(@class, \"ll-sp__normal\") and "
+            + "text()=\"Поле тело письма заполнено. Первое задание. -- Ира Иванова Отправлено из Почты Mail.ru\"]"));
+        sentLetter.isDisplayed();
 
-        //10.	 Выйти из учётной записи
-
-        buttonClicK.click();
-        WebElement buttonExit = driver.findElement(By.xpath(
-            "//div[@class=\"ph-sidebar svelte-3hgv3e\"]/*//div[@class=\"ph-item "
-                + "ph-item__hover-active svelte-6ia8p0\"]"));
-        buttonExit.click();
+        //10. Выйти из учётной записи
 
         softly.assertAll();
     }
