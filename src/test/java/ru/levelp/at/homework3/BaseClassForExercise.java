@@ -29,9 +29,6 @@ public class BaseClassForExercise {
         WebElement frame = driver.findElement((By.xpath("//div/iframe[@class=\"ag-popup__frame__layout__iframe\"]")));
         driver.switchTo().frame(frame);
 
-        driver.findElement(
-            By.xpath("//*[@id=\"root\"]/div/div/div/div[2]/div/div/form/div[2]/div[2]/div[1]/div/div")).click();
-
         driver.findElement(By.xpath("//input[@name='username']")).sendKeys("irushik1981" + Keys.ENTER);
 
         WebElement passwordField = driver.findElement(By.xpath("//input[@name='password']"));
