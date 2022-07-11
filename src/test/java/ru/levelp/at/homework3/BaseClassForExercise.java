@@ -47,13 +47,13 @@ public class BaseClassForExercise {
 
     @AfterMethod
     public void tearDown() {
-        //       9. Выйти из учётной записи
-        //        WebElement buttonClicK = driver.findElement(By.xpath("//*[@id=\"ph-whiteline\"]/div/div[2]/div[2]"));
-        //        buttonClicK.click();
-        //        WebElement buttonExit = driver.findElement(By.xpath(
-        //            "//div[@class=\"ph-sidebar svelte-3hgv3e\"]/*//div[@class=\"ph-item "
-        //                + "ph-item__hover-active svelte-6ia8p0\"]"));
-        //        buttonExit.click();
+//               9. Выйти из учётной записи
+                WebElement buttonClicK = driver.findElement(By.xpath("//*[@id=\"ph-whiteline\"]/div/div[2]/div[2]"));
+                buttonClicK.click();
+                WebElement buttonExit = driver.findElement(By.xpath(
+                    "//div[@class=\"ph-sidebar svelte-3hgv3e\"]/*//div[@class=\"ph-item "
+                        + "ph-item__hover-active svelte-6ia8p0\"]"));
+                buttonExit.click();
         driver.quit();
     }
 }
