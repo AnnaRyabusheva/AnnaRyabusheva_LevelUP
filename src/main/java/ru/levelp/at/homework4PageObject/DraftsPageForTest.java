@@ -17,7 +17,7 @@ public class DraftsPageForTest extends BaseAbstractPageObjectClass {
     private static WebElement myFirstLetterForVerify;
 
     @FindBy(xpath = "//span[@title=\"irushik1981@mail.ru\"]")
-    private  static WebElement verifyMail;
+    private static WebElement verifyMail;
 
     public static void verifyLetterInDrafts() {
         myFirstLetterForVerify.isDisplayed();
@@ -26,12 +26,8 @@ public class DraftsPageForTest extends BaseAbstractPageObjectClass {
     public static void enterInLetter() {
         myFirstLetterForVerify.click();
     }
-    public String  verifyMailString() {
+
+    public String verifyMailString() {
         return verifyMail.getText();
     }
-
-
-
-
-
 }

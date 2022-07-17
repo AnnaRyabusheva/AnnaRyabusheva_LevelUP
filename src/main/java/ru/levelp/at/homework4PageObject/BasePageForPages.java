@@ -33,10 +33,13 @@ public class BasePageForPages {
     @FindBy(xpath = "//div[@data-type]//div/input[@type=\"text\"]")
     private static WebElement colum;
 
-    @FindBy(xpath = "//div[@class=\"container--3QXHv\"]//input[@class=\"container--H9L5q size_s--3_M-_\"]")
+    @FindBy(xpath = "//div/input[@name=\"Subject\"]")
     private static WebElement tem;
 
-    @FindBy(xpath = "//div[contains(@class, 'editable-container')]/div/div")
+    @FindBy(xpath = "//div[@class=\"container--3QXHv\"]/div[@class=\"inputContainer--nsqFu\" ]/input")//div[@class="container--3QXHv"]/div/input
+    private static WebElement subject;
+
+    @FindBy(xpath = "//div[contains(@class, 'editable-container')]/div/div") //div[@class="editable-container-jx2a"]
     private static WebElement postField;
 
     @FindBy(xpath = "//button[@data-test-id=\"save\"]")
@@ -48,7 +51,16 @@ public class BasePageForPages {
     @FindBy(xpath = "//div[contains(@class, \"nav__folder-name__txt\") and text()=\"Черновики\"]")
     private static WebElement draftsButton;
 
-    public static void entryMenu() {
+    @FindBy(xpath = "//a[@href=\"/sent/\"]")
+    private static WebElement folderOfSendLetters;
+
+    @FindBy(xpath = "//div[@class=\"nav__folder-name nav__folder-name_shared\" ]/div[contains(@class, \"nav__folder-name__txt\") and text()=\"Отправленные\"]")
+    private static WebElement folderSentLennerNew;
+
+    @FindBy(xpath = "//div[@class=\"js-helper js-readmsg-msg\"]//div[@class]/div")
+    private static WebElement verifyBodyInLetter;
+
+       public static void entryMenu() {
         profileButton.click();
     }
 
@@ -63,11 +75,20 @@ public class BasePageForPages {
     public static void sendTem() {
         tem.sendKeys("\"Тестовое письмо\"");
     }
+    public String verifySubject(){
+        return subject.getText();
+    }
+//    public  static void verifyLetterSenders(){
+//           tem.isDisplayed();
+//    }
     public static void sendColum() {
         colum.sendKeys("irushik1981@mail.ru");
     }
     public static void sendTopic() {
         postField.sendKeys("Первое тестовое письмо для теста. Лети.");
+    }
+    public String verifyPostField(){
+        return verifyBodyInLetter.getText();
     }
 
     public static void saveButtonForDraft() {
@@ -85,6 +106,15 @@ public class BasePageForPages {
     public static void exitFromMail() {
         profileButton.click();
         exitButton.click();
+    }
+
+    public static void buttonForSentLetter() {
+        sentLetter.click();
+    }
+
+    public static void buttonOfFolderOfSendLetters() {
+//        folderOfSendLetters.click();
+        folderSentLennerNew.click();
     }
 }
 
