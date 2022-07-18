@@ -1,4 +1,4 @@
-package ru.levelp.at.homework4PageObject;
+package ru.levelp.at.homework4;
 
 import java.io.FileInputStream;
 import java.io.IOException;

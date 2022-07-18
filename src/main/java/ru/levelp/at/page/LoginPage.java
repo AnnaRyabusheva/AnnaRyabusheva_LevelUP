@@ -1,4 +1,4 @@
-package ru.levelp.at.homework4PageObject;
+package ru.levelp.at.page;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LoginPage extends BaseAbstractPageObjectClass {
+public class LoginPage extends BasePageForPages {
     public LoginPage(WebDriver driver, WebDriverWait wait) {
         PageFactory.initElements(driver, this);
     }
@@ -28,7 +28,7 @@ public class LoginPage extends BaseAbstractPageObjectClass {
     public void inputLogin(String login) {
 
         //        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@name='username']")));
-        loginField.sendKeys(login+Keys.ENTER);
+        loginField.sendKeys(login + Keys.ENTER);
     }
 
     public void inputPasswd(String passwd) {
