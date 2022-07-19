@@ -8,11 +8,13 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 public class BaseClassForExercise {
     WebDriver driver;
+    WebDriverWait wait;
 
     @BeforeMethod
     public void setUp() {
@@ -22,9 +24,10 @@ public class BaseClassForExercise {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(400));
         driver.manage().window().maximize();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         driver.navigate().to("https://mail.ru/");
-        driver.findElement(By.xpath("//*[@id=\"mailbox\"]/div[1]/button")).click();
+        driver.findElement(By.xpath("//div[@id=\"mailbox\"]/div/button[@data-testid=\"enter-mail-primary\"]")).click();
 
         WebElement frame = driver.findElement((By.xpath("//div/iframe[@class=\"ag-popup__frame__layout__iframe\"]")));
         driver.switchTo().frame(frame);
@@ -37,7 +40,7 @@ public class BaseClassForExercise {
 
         //2.Assert, что вход выполнен успешно
 
-        driver.findElement(By.xpath("//*[@id=\"ph-whiteline\"]/div/div[2]/div[2]")).click();
+        driver.findElement(By.xpath("//*[@id=\"ph-whiteline\"]//div[@aria-label=\"irushik1981@mail.ru\"]")).click();
 
         String txtUserName = driver.findElement(By.xpath("//*[@aria-label=\"Ира Иванова\"]")).getText();
         softly.assertThat(txtUserName).isEqualTo("Ира Иванова");
@@ -47,13 +50,13 @@ public class BaseClassForExercise {
 
     @AfterMethod
     public void tearDown() {
-//               9. Выйти из учётной записи
-                WebElement buttonClicK = driver.findElement(By.xpath("//*[@id=\"ph-whiteline\"]/div/div[2]/div[2]"));
-                buttonClicK.click();
-                WebElement buttonExit = driver.findElement(By.xpath(
-                    "//div[@class=\"ph-sidebar svelte-3hgv3e\"]/*//div[@class=\"ph-item "
-                        + "ph-item__hover-active svelte-6ia8p0\"]"));
-                buttonExit.click();
+        //9. Выйти из учётной записи
+        WebElement buttonClick = driver.findElement(By.xpath("//*[@id=\"ph-whiteline\"]"
+            + "//div[@aria-label=\"irushik1981@mail.ru\"]"));
+        buttonClick.click();
+        WebElement buttonExit = driver.findElement(By.xpath(
+            "//div[contains(@class, \"ph-sidebar\")]//div[contains(@data-testid, \"whiteline-account-exit\")]"));
+        buttonExit.click();
         driver.quit();
     }
 }

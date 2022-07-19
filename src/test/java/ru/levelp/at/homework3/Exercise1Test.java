@@ -11,7 +11,6 @@ public class Exercise1Test extends BaseClassForExercise {
 
         //1.Войти в почту: выполнено в базовом классе
         //2.Assert, что вход выполнен успешно: выполненно в базовом классе
-
         //3.Создать новое письмо (заполнить адресата, тему письма и тело)
 
         driver.findElement(By.xpath(
@@ -21,7 +20,7 @@ public class Exercise1Test extends BaseClassForExercise {
         WebElement colum = driver.findElement(By.xpath("//input[@type=\"text\"]"));
         colum.sendKeys("irushik1981@mail.ru");
         WebElement tem = driver.findElement(By.xpath(
-            "//div[@class=\"container--3QXHv\"]//input[@class=\"container--H9L5q size_s--3_M-_\"]"));
+            "//div[@class=\"container--3QXHv\"]//input[@name=\"Subject\"]"));
         tem.click();
         tem.sendKeys("Тестовое письмо");
 
@@ -52,17 +51,17 @@ public class Exercise1Test extends BaseClassForExercise {
 
         //6.Verify контент, адресата и тему письма (должно совпадать с пунктом 3)}
 
-        String adressLetter = driver.findElement(By.xpath(
-                                        "//span[@title=\"irushik1981@mail.ru\"]"))
-                                    .getText();
-        softly.assertThat(adressLetter)
+        String addressLetter = driver.findElement(By.xpath(
+                                         "//span[@title=\"irushik1981@mail.ru\"]"))
+                                     .getText();
+        softly.assertThat(addressLetter)
               .isEqualTo("irushik1981@mail.ru");
 
-        String otpravitelLetter = driver.findElement(By.xpath(
-                                            "//span[contains(@class, \"ll-sj__normal\") "
-                                                + "and text()=\"Тестовое письмо\"]"))
-                                        .getText();
-        softly.assertThat(otpravitelLetter)
+        String senderLetter = driver.findElement(By.xpath(
+                                        "//span[contains(@class, \"ll-sj__normal\") "
+                                            + "and text()=\"Тестовое письмо\"]"))
+                                    .getText();
+        softly.assertThat(senderLetter)
               .isEqualTo("Тестовое письмо");
 
         //7.Отправить письмо
@@ -74,6 +73,7 @@ public class Exercise1Test extends BaseClassForExercise {
         WebElement sendButton = driver.findElement(By.xpath("//button[@data-test-id=\"send\"]"));
         sendButton.click();
 
+        //driver.findElement(By.xpath("//button[contains(@title, \"Закрыть\")]")).click();
         //8.Verify, что письмо исчезло из черновиков
 
         //9.Verify, что письмо появилось в папке отправленные

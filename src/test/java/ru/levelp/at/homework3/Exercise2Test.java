@@ -11,7 +11,6 @@ public class Exercise2Test extends BaseClassForExercise {
     public void letterPapkaTest() {
         //1.Войти в почту: выполнено в базовом классе
         //2.Assert, что вход выполнен успешно: выполнено в базовом классе
-
         //3.Создать новое письмо (заполнить адресата (самого себя), тему письма (должно содержать слово Тест)
         // и тело)
 
@@ -24,7 +23,7 @@ public class Exercise2Test extends BaseClassForExercise {
         WebElement colum = driver.findElement(By.xpath("//input[@type=\"text\"]"));
         colum.sendKeys("irushik1981@mail.ru");
         WebElement tem = driver.findElement(By.xpath(
-            "//div[@class=\"container--3QXHv\"]//input[@class=\"container--H9L5q size_s--3_M-_\"]"));
+            "//div[@class=\"container--3QXHv\"]//input[@name=\"Subject\"]"));
         tem.click();
         tem.sendKeys("Тест");
         WebElement postField = driver.findElement(By.xpath("//div[contains(@class, 'editable-container')]/div/div"));
@@ -52,7 +51,8 @@ public class Exercise2Test extends BaseClassForExercise {
         //6.Verify, что письмо появилось в папке «Тест»
 
         Actions action = new Actions(driver);
-        WebElement link = driver.findElement(By.xpath("//*[@id=\"sideBarContent\"]/div/nav/a[6]/div/div[2]"));
+        WebElement link = driver.findElement(By.xpath("//*[@id=\"sideBarContent\"]//div[contains(@class, "
+            + "\"nav__folder-name__txt\") and text()=\"Тест\"]"));
         action.doubleClick(link).perform();
 
         //7.Verify контент, адресата и тему письма (должно совпадать с пунктом 3)

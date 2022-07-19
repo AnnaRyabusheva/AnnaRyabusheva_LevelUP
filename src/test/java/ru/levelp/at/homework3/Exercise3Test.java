@@ -1,8 +1,8 @@
 package ru.levelp.at.homework3;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
 public class Exercise3Test extends BaseClassForExercise {
@@ -21,35 +21,35 @@ public class Exercise3Test extends BaseClassForExercise {
 
         driver.findElement(By.xpath("//input[@type=\"text\"]")).sendKeys("irushik1981@mail.ru");
         WebElement topicOfLetter = driver.findElement(By.xpath(
-            "//div[@class=\"container--3QXHv\"]//input[@class=\"container--H9L5q size_s--3_M-_\"]"));
+            "//div[@class=\"container--3QXHv\"]//input[@name=\"Subject\"]"));
         topicOfLetter.click();
         topicOfLetter.sendKeys("Второе письмо");
         driver.findElement(By.xpath("//div[contains(@class, 'editable-container')]/div/div"))
-              .sendKeys("Заполенние тела письма. 3е задание по селениуму");
+              .sendKeys("Заполнение тела письма. 3е задание по селениуму");
 
         //4.Отправить письмо
 
         driver.findElement(
             By.xpath("//div[contains(@class, 'footer')]/div/div/div[@data-test-id=\"underlay-wrapper\"]")).click();
 
-//        driver.findElement(By.xpath("//body")).sendKeys(Keys.ESCAPE);
-
         //5.Verify, что письмо появилось в папке Входящие
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href=\"/inbox/\"]"))).click();
+        wait.until(
+                ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"mt-h-c__item mt-h-c__item_title\"]"))).click();
 
-        WebElement buttonToSelfLetter =
-            driver.findElement(By.xpath("//div[@class=\"mt-h-c__item mt-h-c__item_title\"]"));
-        buttonToSelfLetter.click();
+//        softly.assertThat(driver.findElement(By.xpath("//span[contains(@class, \"ll-sj__normal\") "
+//            + "and text()=\"Второе письмо\"]")).isDisplayed());
 
-        String checkOfBodyLetter = driver.findElement(By.xpath(
-                                             "//span[contains(@class, \"ll-sp__normal\") and text()=\"Заполенние тела "
-                                                 + "письма. 3е задание по селениуму -- Ира Иванова "
-                                                 + "Отправлено из Почты Mail.ru\"]"))
-                                         .getText();
-        softly.assertThat(checkOfBodyLetter)
-              .contains("Заполенние тела письма. 3е задание по селениуму -- Ира Иванова Отправлено из Почты Mail.ru");
+
 
         //6.Verify контент, адресата и тему письма (должно совпадать с пунктом 3)
+        driver.findElement(By.xpath("//span[contains(@class, \"ll-sj__normal\") "
+            + "and text()=\"Второе письмо\"]")).click();
 
+        String checkOfBodyLetter = driver.findElement(By.xpath("//span[contains(@class, "
+            + "\"ll-sj__normal\") and text()=\"Второе письмо\"]")).getText();
+        softly.assertThat(checkOfBodyLetter)
+              .contains("Второе письмо");
         String addressLetter = driver.findElement(By.xpath(
                                          "//span[@title=\"Ира Иванова <irushik1981@mail.ru>\"]"))
                                      .getText();
@@ -65,8 +65,9 @@ public class Exercise3Test extends BaseClassForExercise {
 
         //7.Удалить письмо
 
-        driver.findElement(By.xpath("//span[@title=\"Ира Иванова <irushik1981@mail.ru>\"]"))
-              .click();
+        //driver.findElement(By.xpath("//div[contains(@class, \"llc__item \")]/span[@title=\"Ира Иванова
+        // <irushik1981@mail.ru>\"]"))//span[@title="Ира Иванова <irushik1981@mail.ru>"]
+        //.click();
         driver.findElement(By.xpath("//span[contains(@class, \"button2__txt\") and text()=\"Удалить\"]")).click();
 
         //8.Verify что письмо появилось в папке Корзина
