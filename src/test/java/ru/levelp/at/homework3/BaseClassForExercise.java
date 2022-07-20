@@ -24,7 +24,7 @@ public class BaseClassForExercise {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(400));
         driver.manage().window().maximize();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
         driver.navigate().to("https://mail.ru/");
         driver.findElement(By.xpath("//div[@id=\"mailbox\"]/div/button[@data-testid=\"enter-mail-primary\"]")).click();
