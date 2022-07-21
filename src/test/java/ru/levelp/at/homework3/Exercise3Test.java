@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class Exercise3Test extends BaseClassForExercise {
 
     @Test
-    public void deleteLetterFromFolderTest()  {
+    public void deleteLetterFromFolderTest() {
         //1.Войти в почту: выполнено в базовом классе
         //2.Assert, что вход выполнен успешно: выполнено в базовом классе
 
@@ -69,7 +69,8 @@ public class Exercise3Test extends BaseClassForExercise {
 
         //7.Удалить письмо
 
-        driver.findElement(By.xpath("//div[@class=\"layout__main-frame\"]//span[@data-title-shortcut]/span")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(
+            By.xpath("//div[@class=\"layout__main-frame\"]//span[@data-title-shortcut]/span"))).click();
 
         //8.Verify что письмо появилось в папке Корзина
         driver.findElement(By.xpath("//div[contains(@class, \"nav__folder-name__txt\") and text()=\"Корзина\"]"))

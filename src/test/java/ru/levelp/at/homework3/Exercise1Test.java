@@ -37,16 +37,16 @@ public class Exercise1Test extends BaseClassForExercise {
 
         //5.Verify, что письмо сохранено в черновиках
 
-        WebElement korzina = driver.findElement(
+        WebElement basket = driver.findElement(
             By.xpath("//div[contains(@class, \"nav__folder-name__txt\") and text()=\"Черновики\"]"));
-        korzina.click();
+        basket.click();
         //
-        String verifyKorzina = driver.findElement(By.xpath(
+        String verifyBasket = driver.findElement(By.xpath(
                                          " //*[@id=\"app-canvas\"]/*//span[contains(@class, \"ll-sp__normal\") "
                                              + "and text()=\"Поле тело письма заполнено. Первое задание. -- Ира"
                                              + " Иванова Отправлено из Почты Mail.ru\"]  "))
                                      .getText();
-        softly.assertThat(verifyKorzina)
+        softly.assertThat(verifyBasket)
               .contains("Поле тело письма заполнено. Первое задание. -- Ира Иванова Отправлено из Почты Mail.ru");
 
         //6.Verify контент, адресата и тему письма (должно совпадать с пунктом 3)}
