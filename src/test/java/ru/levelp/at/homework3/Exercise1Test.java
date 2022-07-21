@@ -2,6 +2,7 @@ package ru.levelp.at.homework3;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
 public class Exercise1Test extends BaseClassForExercise {
@@ -73,11 +74,12 @@ public class Exercise1Test extends BaseClassForExercise {
         WebElement sendButton = driver.findElement(By.xpath("//button[@data-test-id=\"send\"]"));
         sendButton.click();
 
-        //driver.findElement(By.xpath("//button[contains(@title, \"Закрыть\")]")).click();
+        driver.findElement(By.xpath("/html/body/div[10]/div/div/div[2]/div[2]/div/div/div[1]")).click();
         //8.Verify, что письмо исчезло из черновиков
 
         //9.Verify, что письмо появилось в папке отправленные
-        driver.findElement(By.xpath("//a[@href=\"/sent/\"]")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href=\"/sent/\"]"))).click();
+
 
         WebElement sentLetter = driver.findElement(By.xpath("//span[contains(@class, \"ll-sp__normal\") and "
             + "text()=\"Поле тело письма заполнено. Первое задание. -- Ира Иванова Отправлено из Почты Mail.ru\"]"));

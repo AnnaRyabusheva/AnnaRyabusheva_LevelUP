@@ -3,6 +3,7 @@ package ru.levelp.at.homework3;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
 public class Exercise2Test extends BaseClassForExercise {
@@ -37,8 +38,7 @@ public class Exercise2Test extends BaseClassForExercise {
 
         //5.Verify, что письмо появилось в папке отправленные
 
-        WebElement verifyLetterInSentFolder = driver.findElement(By.xpath("//a[@href=\"/sent/\"]"));
-        verifyLetterInSentFolder.click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href=\"/sent/\"]"))).click();
 
         String checkOfBodyLetter = driver.findElement(By.xpath(
                                              "//span[contains(@class, \"ll-sp__normal\") and text()=\"Поле тело"
