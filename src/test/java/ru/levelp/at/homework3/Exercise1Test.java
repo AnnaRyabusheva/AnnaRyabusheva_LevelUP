@@ -84,7 +84,8 @@ public class Exercise1Test extends BaseClassForExercise {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href=\"/sent/\"]"))).click();
 
         WebElement sentLetter = wait.until(ExpectedConditions.elementToBeClickable(
-            By.xpath("//span[contains(@class, \"ll-sp__normal\") and text()=\"Поле тело письма заполнено. Первое задание. -- Ира Иванова Отправлено из Почты Mail.ru\"]")));
+            By.xpath("//span[contains(@class, \"ll-sp__normal\") and text()=\"Поле тело письма заполнено."
+                + " Первое задание. -- Ира Иванова Отправлено из Почты Mail.ru\"]")));
         sentLetter.isDisplayed();
 
         //10. Выйти из учётной записи

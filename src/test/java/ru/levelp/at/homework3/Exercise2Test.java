@@ -19,8 +19,8 @@ public class Exercise2Test extends BaseClassForExercise {
             "//span[contains(@class,\"compose-button__txt\") and text()=\"Написать письмо\"]"));
         composBut.click();
 
-        WebElement to = driver.findElement((By.xpath("//div[@class=\"input--3slxg\"]")));
-        to.click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"input--3slxg\"]"))).click();
+
         WebElement colum = driver.findElement(By.xpath("//input[@type=\"text\"]"));
         colum.sendKeys("irushik1981@mail.ru");
         WebElement tem = driver.findElement(By.xpath(
