@@ -4,34 +4,51 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends BasePageForPages {
-    public LoginPage(WebDriver driver, WebDriverWait wait) {
-        PageFactory.initElements(driver, this);
-    }
 
-    @FindBy(xpath = "//*[@id=\"mailbox\"]/div[1]/button")
-    private WebElement buttonForLoginFrame;
+    @FindBy(xpath = "//div[@id=\"mailbox\"]/div/button[@data-testid=\"enter-mail-primary\"]")
+    protected WebElement loginButton;
+
+    @FindBy(xpath = "//div/iframe[@class=\"ag-popup__frame__layout__iframe\"]")
+    protected WebElement frame;
 
     @FindBy(xpath = "//input[@name='username']")
-    private WebElement loginField;
+    protected WebElement loginField;
 
     @FindBy(xpath = "//input[@name='password']")
-    private WebElement passwordField;
+    protected WebElement passwordField;
 
-    public void clickLoginBtn() {
-        buttonForLoginFrame.click();
+    @FindBy(xpath = "//*[@id=\"ph-whiteline\"]//div[@aria-label=\"irushik1981@mail.ru\"]")
+    protected WebElement rightSideBar;
+
+    @FindBy(xpath = "//*[@aria-label=\"Ира Иванова\"]")
+    protected WebElement textForVerifyTitle;
+
+    public LoginPage(WebDriver driver) {
+        super(driver);
     }
 
-    public void inputLogin(String login) {
+    public void openLoginForm() {
+        clickToButton(loginButton);
+        driver.switchTo().frame(frame);
+    }
 
-        //        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@name='username']")));
+    public void loginInEmail(String login) {
+
         loginField.sendKeys(login + Keys.ENTER);
     }
 
-    public void inputPasswd(String passwd) {
-        passwordField.sendKeys(passwd + Keys.ENTER);
+    public void putPassword(String password) {
+
+        passwordField.sendKeys(password + Keys.ENTER);
+    }
+
+
+    public String verifyTitle() {
+        clickToButton(rightSideBar);
+        return wait.until(ExpectedConditions.visibilityOf(textForVerifyTitle)).getText();
     }
 }
+
