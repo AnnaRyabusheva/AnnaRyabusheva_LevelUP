@@ -24,7 +24,6 @@ public class ElementsForVerify extends BasePage {
     @FindBy(xpath = "")
     protected WebElement verifyBodyOfLetter;
 
-//    @FindBy(xpath = "")
-//    protected WebElement ;
+
 
 }
