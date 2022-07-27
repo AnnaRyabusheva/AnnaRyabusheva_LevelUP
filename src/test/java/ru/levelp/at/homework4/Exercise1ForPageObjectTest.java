@@ -33,9 +33,11 @@ public class Exercise1ForPageObjectTest extends AbstractSeleniumBaseTest {
         createAndSentPage.clickToLetterInDraft();
         softy.assertEquals(createAndSentPage.sender(), "irushik1981@mail.ru");
         softy.assertEquals(createAndSentPage.topicVerify(), "Тестовое письмо");
-//        softy.assertEquals(createAndSentPage.bodyToVarify(), "Первое письмо для Page Object");
+        softy.assertEquals(createAndSentPage.bodyToVarify(), "Первое письмо для Page Object");
         //7.Отправить письмо
         createAndSentPage.sentLetter();
+        //8.Verify, что письмо исчезло из черновиков
+        softy.assertTrue(createAndSentPage.letterNotVisible(), String.valueOf(true));
         //9. Выйти из учётной записи
         softy.assertAll();
     }

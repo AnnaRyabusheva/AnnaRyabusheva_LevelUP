@@ -1,5 +1,6 @@
 package ru.levelp.at.homework4.page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -51,15 +52,14 @@ public class CreateAndSentPage extends BasePage {
         + " для Page Object -- Ира Иванова Отправлено из Почты Mail.ru\"]")
     protected WebElement verifyLetterInDraft;
 
-    @FindBy(xpath = "//div[contains(@class, \"scrollview--SiHhk\")]//div[contains(@title, \"irushik1981@mail.ru\")]/span")
+    @FindBy(xpath = "//div[contains(@class, \"scrollview--SiHhk\")]//div[contains(@title,"
+        + " \"irushik1981@mail.ru\")]/span")
     protected WebElement verifySender;
 
-    @FindBy(xpath = "/html/body/div[1]/div/div[2]/div/div/div/div[2]/div[3]/div[3]/div[1]/div[2]/div")//div[contains(@class, \"scrollview--SiHhk\")]//div[@class=\"subject__container--HWnat\"]"
-//        + "//input[contains(@value, \"Тестовое письмо\")]
+    @FindBy(xpath = "//div/input[@name=\"Subject\"]")
     protected WebElement topicVer;
 
-    @FindBy(xpath = "//*[@id=\"style_16589126651251381899_BODY\"]/div/div[1]")//div[contains(@class, \"scrollview--SiHhk\")]//div[@class=\"editor_container--3Rj-8\"]"
-//        + "//div[@class=\"cl_944064\"]/div
+    @FindBy(xpath = "//div[@class=\"js-helper js-readmsg-msg\"]//div[text()='Первое письмо для Page Object']")
     protected WebElement bodyVerify;
 
     public void tabToNewLetterButton() {
@@ -75,7 +75,8 @@ public class CreateAndSentPage extends BasePage {
     public void saveLetter() {
         clickToButton(buttonToSaveLetter);
     }
-    public  void exitLetter(){
+
+    public void exitLetter() {
         clickToButton(closeLetterWindow);
     }
 
@@ -95,6 +96,7 @@ public class CreateAndSentPage extends BasePage {
 
     public void sentLetter() {
         clickToButton(sentButton);
+        wait.until(ExpectedConditions.visibilityOf(sentButton)).click();
     }
 
     public String sender() {
@@ -102,10 +104,19 @@ public class CreateAndSentPage extends BasePage {
     }
 
     public String topicVerify() {
-        return wait.until(ExpectedConditions.visibilityOf(topicVer)).getText();
+        //        System.out.println("афвыафвыааыввы:   " + topicVer.getAttribute("value"));
+
+        return wait.until(ExpectedConditions.visibilityOf(topicVer)).getAttribute("value");
     }
 
     public String bodyToVarify() {
+
         return wait.until(ExpectedConditions.visibilityOf(bodyVerify)).getText();
+    }
+
+    public Boolean letterNotVisible() {
+        boolean isPresent = driver.findElements((By) verifyLetterInDraft).size() > 0;
+        return isPresent;
+
     }
 }
