@@ -22,6 +22,7 @@
     <webdrivermanager.version>5.2.1</webdrivermanager.version>
     <assertj-core.version>3.23.1</assertj-core.version>
 
+<!--    <jcl-over-slf4j.version>1.7.5</jcl-over-slf4j.version>-->
 
   </properties>
 
@@ -109,6 +110,11 @@
       <version>${webdrivermanager.version}</version>
       <scope>test</scope>
     </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.slf4j</groupId>-->
+<!--      <artifactId>jcl-over-slf4j</artifactId>-->
+<!--      <version>${jcl-over-slf4j.version}</version>-->
+<!--    </dependency>-->
 
     <dependency>
       <groupId>org.testng</groupId>

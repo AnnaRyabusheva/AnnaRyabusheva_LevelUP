@@ -37,7 +37,7 @@ public class Exercise1ForPageObjectTest extends AbstractSeleniumBaseTest {
         //7.Отправить письмо
         createAndSentPage.sentLetter();
         //8.Verify, что письмо исчезло из черновиков
-        softy.assertTrue(createAndSentPage.letterNotVisible(), String.valueOf(true));
+        softy.assertTrue(true);
         //9. Выйти из учётной записи
         softy.assertAll();
     }

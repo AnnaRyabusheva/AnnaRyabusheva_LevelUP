@@ -50,7 +50,7 @@ public class CreateAndSentPage extends BasePage {
 
     @FindBy(xpath = "//*[@id=\"app-canvas\"]/*//span[contains(@class, \"ll-sp__normal\") and text()=\"Первое письмо"
         + " для Page Object -- Ира Иванова Отправлено из Почты Mail.ru\"]")
-    protected WebElement verifyLetterInDraft;
+    protected WebElement verifyLetterIn;
 
     @FindBy(xpath = "//div[contains(@class, \"scrollview--SiHhk\")]//div[contains(@title,"
         + " \"irushik1981@mail.ru\")]/span")
@@ -86,12 +86,12 @@ public class CreateAndSentPage extends BasePage {
     }
 
     public boolean verifyLetterInDraft() {
-        wait.until(ExpectedConditions.visibilityOf(verifyLetterInDraft)).isDisplayed();
+        wait.until(ExpectedConditions.visibilityOf(verifyLetterIn)).isDisplayed();
         return true;
     }
 
     public void clickToLetterInDraft() {
-        clickToButton(verifyLetterInDraft);
+        clickToButton(verifyLetterIn);
     }
 
     public void sentLetter() {
@@ -114,9 +114,10 @@ public class CreateAndSentPage extends BasePage {
         return wait.until(ExpectedConditions.visibilityOf(bodyVerify)).getText();
     }
 
-    public Boolean letterNotVisible() {
-        boolean isPresent = driver.findElements((By) verifyLetterInDraft).size() > 0;
-        return isPresent;
+    public boolean letterNotVisible() {
 
+        Boolean letter=wait.until(ExpectedConditions.invisibilityOfElementLocated((By) verifyLetterIn));
+        System.out.println("sdgadgsg s" + letter);
+        return letter;
     }
 }
