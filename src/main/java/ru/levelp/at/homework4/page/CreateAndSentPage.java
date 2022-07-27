@@ -35,7 +35,7 @@ public class CreateAndSentPage extends BasePage {
     @FindBy(xpath = "//div[contains(@class, \"nav__folder-name__txt\") and text()=\"Черновики\"]")
     protected WebElement draftButton;
 
-    @FindBy(xpath = "//a[@href=\"/sent/\"]")
+    @FindBy(xpath = "//div[contains(@class, \"focus-zone\")]//button[@data-test-id]")
     protected WebElement sentButton;
 
     @FindBy(xpath = "//div//button[@title=\"Закрыть\"]")
@@ -54,12 +54,12 @@ public class CreateAndSentPage extends BasePage {
     @FindBy(xpath = "//div[contains(@class, \"scrollview--SiHhk\")]//div[contains(@title, \"irushik1981@mail.ru\")]/span")
     protected WebElement verifySender;
 
-    @FindBy(xpath = "//div[contains(@class, \"scrollview--SiHhk\")]//div[@class=\"subject__container--HWnat\"]"
-        + "//input[contains(@value, \"Тестовое письмо\")]")
+    @FindBy(xpath = "/html/body/div[1]/div/div[2]/div/div/div/div[2]/div[3]/div[3]/div[1]/div[2]/div")//div[contains(@class, \"scrollview--SiHhk\")]//div[@class=\"subject__container--HWnat\"]"
+//        + "//input[contains(@value, \"Тестовое письмо\")]
     protected WebElement topicVer;
 
-    @FindBy(xpath = "//div[contains(@class, \"scrollview--SiHhk\")]//div[@class=\"editor_container--3Rj-8\"]"
-        + "//div[@class=\"cl_944064\"]/div")
+    @FindBy(xpath = "//*[@id=\"style_16589126651251381899_BODY\"]/div/div[1]")//div[contains(@class, \"scrollview--SiHhk\")]//div[@class=\"editor_container--3Rj-8\"]"
+//        + "//div[@class=\"cl_944064\"]/div
     protected WebElement bodyVerify;
 
     public void tabToNewLetterButton() {
@@ -75,8 +75,12 @@ public class CreateAndSentPage extends BasePage {
     public void saveLetter() {
         clickToButton(buttonToSaveLetter);
     }
+    public  void exitLetter(){
+        clickToButton(closeLetterWindow);
+    }
 
     public void draftButtonClick() {
+        clickToButton(draftButton);
         wait.until(ExpectedConditions.elementToBeClickable(draftButton));
     }
 

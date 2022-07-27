@@ -17,9 +17,9 @@
     <checkstyle.version>9.3</checkstyle.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <testng.version>7.6.0</testng.version>
-    <selenium-java.version>4.2.1</selenium-java.version>
+    <selenium-java.version>4.3.0</selenium-java.version>
     <aspectj.version>1.9.8</aspectj.version>
-    <webdrivermanager.version>5.2.0</webdrivermanager.version>
+    <webdrivermanager.version>5.2.1</webdrivermanager.version>
     <assertj-core.version>3.23.1</assertj-core.version>
 
 
@@ -122,18 +122,6 @@
       <artifactId>assertj-core</artifactId>
       <version>${assertj-core.version}</version>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.testng</groupId>
-      <artifactId>testng</artifactId>
-      <version>7.6.0</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.github.bonigarcia</groupId>
-      <artifactId>webdrivermanager</artifactId>
-      <version>5.2.0</version>
-      <scope>compile</scope>
     </dependency>
 
 
