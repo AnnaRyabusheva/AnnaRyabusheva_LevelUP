@@ -1,13 +1,13 @@
-package ru.levelp.at.page;
+package ru.levelp.at.homework4.page;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class PageToCreateAndSentEmail extends BasePageForPages {
+public class CreateAndSentPage extends BasePage {
 
-    public PageToCreateAndSentEmail(WebDriver driver) {
+    public CreateAndSentPage(WebDriver driver) {
         super(driver);
     }
 
@@ -26,7 +26,7 @@ public class PageToCreateAndSentEmail extends BasePageForPages {
     @FindBy(xpath = "//button[@data-test-id=\"save\"]")
     protected WebElement buttonToSaveLetter;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = "//button[@data-test-id=\"send\"]")
     protected WebElement elementForSent;
 
     @FindBy(xpath = "//button[@data-test-id=\"send\"]")
@@ -47,6 +47,21 @@ public class PageToCreateAndSentEmail extends BasePageForPages {
     @FindBy(xpath = "//div[contains(@class, \"ph-sidebar\")]//div[contains(@data-testid, \"whiteline-account-exit\")]")
     protected WebElement exitButton;
 
+    @FindBy(xpath = "//*[@id=\"app-canvas\"]/*//span[contains(@class, \"ll-sp__normal\") and text()=\"Первое письмо"
+        + " для Page Object -- Ира Иванова Отправлено из Почты Mail.ru\"]")
+    protected WebElement verifyLetterInDraft;
+
+    @FindBy(xpath = "//div[contains(@class, \"scrollview--SiHhk\")]//div[contains(@title, \"irushik1981@mail.ru\")]/span")
+    protected WebElement verifySender;
+
+    @FindBy(xpath = "//div[contains(@class, \"scrollview--SiHhk\")]//div[@class=\"subject__container--HWnat\"]"
+        + "//input[contains(@value, \"Тестовое письмо\")]")
+    protected WebElement topicVer;
+
+    @FindBy(xpath = "//div[contains(@class, \"scrollview--SiHhk\")]//div[@class=\"editor_container--3Rj-8\"]"
+        + "//div[@class=\"cl_944064\"]/div")
+    protected WebElement bodyVerify;
+
     public void tabToNewLetterButton() {
         clickToButton(newLetterButton);
     }
@@ -56,10 +71,37 @@ public class PageToCreateAndSentEmail extends BasePageForPages {
         wait.until(ExpectedConditions.visibilityOf(topicField)).sendKeys(topic);
         wait.until(ExpectedConditions.visibilityOf(bodyOfLetterField)).sendKeys(bodyOfLetter);
     }
-    public void saveLetter(){
+
+    public void saveLetter() {
         clickToButton(buttonToSaveLetter);
     }
-    public void draftButtonClick(){
+
+    public void draftButtonClick() {
         wait.until(ExpectedConditions.elementToBeClickable(draftButton));
+    }
+
+    public boolean verifyLetterInDraft() {
+        wait.until(ExpectedConditions.visibilityOf(verifyLetterInDraft)).isDisplayed();
+        return true;
+    }
+
+    public void clickToLetterInDraft() {
+        clickToButton(verifyLetterInDraft);
+    }
+
+    public void sentLetter() {
+        clickToButton(sentButton);
+    }
+
+    public String sender() {
+        return wait.until(ExpectedConditions.visibilityOf(verifySender)).getText();
+    }
+
+    public String topicVerify() {
+        return wait.until(ExpectedConditions.visibilityOf(topicVer)).getText();
+    }
+
+    public String bodyToVarify() {
+        return wait.until(ExpectedConditions.visibilityOf(bodyVerify)).getText();
     }
 }

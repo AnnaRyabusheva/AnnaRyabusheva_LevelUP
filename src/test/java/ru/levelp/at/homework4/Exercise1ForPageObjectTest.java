@@ -2,8 +2,8 @@ package ru.levelp.at.homework4;
 
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import ru.levelp.at.page.LoginPage;
-import ru.levelp.at.page.PageToCreateAndSentEmail;
+import ru.levelp.at.homework4.page.LoginPage;
+import ru.levelp.at.homework4.page.CreateAndSentPage;
 
 public class Exercise1ForPageObjectTest extends AbstractSeleniumBaseTest {
 
@@ -19,16 +19,22 @@ public class Exercise1ForPageObjectTest extends AbstractSeleniumBaseTest {
         //2.Assert, что вход выполнен успешно.
         softy.assertEquals(loginPage.verifyTitle(), "Ира Иванова");
         //3.Создать новое письмо (заполнить адресата, тему письма и тело)
-        PageToCreateAndSentEmail pageToCreateAndSentEmail = new PageToCreateAndSentEmail(driver);
-        pageToCreateAndSentEmail.tabToNewLetterButton();
-        pageToCreateAndSentEmail.fillSender("irushik1981@mail.ru", "Тестовое письмо", "Первое письмо для Page Object");
+        CreateAndSentPage createAndSentPage = new CreateAndSentPage(driver);
+        createAndSentPage.tabToNewLetterButton();
+        createAndSentPage.fillSender("irushik1981@mail.ru", "Тестовое письмо", "Первое письмо "
+            + "для Page Object");
         //4.Сохранить его как черновик
-        pageToCreateAndSentEmail.saveLetter();
+        createAndSentPage.saveLetter();
         //5.Verify, что письмо сохранено в черновиках
-        pageToCreateAndSentEmail.draftButtonClick();
-
-
-
+        createAndSentPage.draftButtonClick();
+        softy.assertTrue(createAndSentPage.verifyLetterInDraft());
+        //6.Verify контент, адресата и тему письма (должно совпадать с пунктом 3
+        createAndSentPage.clickToLetterInDraft();
+        softy.assertEquals(createAndSentPage.sender(), "irushik1981@mail.ru");
+        softy.assertEquals(createAndSentPage.topicVerify(), "Тестовое письмо");
+        softy.assertEquals(createAndSentPage.bodyToVarify(), "Первое письмо для Page Object");
+        //7.Отправить письмо
+        createAndSentPage.sentLetter();
         //9. Выйти из учётной записи
         softy.assertAll();
     }

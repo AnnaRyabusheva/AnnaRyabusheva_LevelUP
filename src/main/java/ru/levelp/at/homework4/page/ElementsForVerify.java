@@ -1,10 +1,10 @@
-package ru.levelp.at.page;
+package ru.levelp.at.homework4.page;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class ElementsForVerify extends BasePageForPages{
+public class ElementsForVerify extends BasePage {
     public ElementsForVerify(WebDriver driver) {
         super(driver);
     }

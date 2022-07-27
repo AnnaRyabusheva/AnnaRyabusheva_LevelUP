@@ -27,7 +27,7 @@ public abstract class AbstractSeleniumBaseTest {
         driver.manage().window().maximize();
         driver.navigate().to(MAIL_URL);
 
-        wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(100));
     }
 
     @AfterMethod

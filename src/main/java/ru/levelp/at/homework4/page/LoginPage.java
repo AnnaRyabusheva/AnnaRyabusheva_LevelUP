@@ -1,4 +1,4 @@
-package ru.levelp.at.page;
+package ru.levelp.at.homework4.page;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class LoginPage extends BasePageForPages {
+public class LoginPage extends BasePage {
 
     @FindBy(xpath = "//div[@id=\"mailbox\"]/div/button[@data-testid=\"enter-mail-primary\"]")
     protected WebElement loginButton;
@@ -41,7 +41,7 @@ public class LoginPage extends BasePageForPages {
     }
 
     public void putPassword(String password) {
-
+        clickToButton(passwordField);
         passwordField.sendKeys(password + Keys.ENTER);
     }
 
