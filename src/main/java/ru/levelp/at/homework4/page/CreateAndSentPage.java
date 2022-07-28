@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CreateAndSentPage extends BasePage {
@@ -72,7 +73,37 @@ public class CreateAndSentPage extends BasePage {
     protected WebElement folderToVerifyPerson;
 
     @FindBy(xpath = "//span[contains(@class, \"ll-sj__normal\") and text()=\"Self: Тест\"]")
-    protected WebElement elementForVerifyInSenderFolder;
+    protected WebElement elementForVerifyInSender;
+
+    @FindBy(xpath = "//span[contains(@class, \"ll-sj__normal\") and text()=\"Тест\"]")
+    protected WebElement elementVerifyInTestF;
+
+    @FindBy(xpath = "//span[@title=\"irushik1981@mail.ru\"]")
+    protected WebElement emailInFolderTest;
+
+    @FindBy(xpath = "//h2[@class=\"thread-subject\"]")
+    protected WebElement topicInFolderTest;
+
+    @FindBy(xpath = "//div[@class=\"js-helper js-readmsg-msg\"]//div[text()=\"Второе письмо для Page Object\"]")
+    protected WebElement bodyInFolderTest;
+
+    @FindBy(xpath = "//a[@href=\"/inbox/\"]")
+    protected WebElement incomingButton;
+
+    @FindBy(xpath = "//div[@class=\"mt-h-c__item mt-h-c__item_title\"]")
+    protected WebElement letterToMySelf;
+
+    @FindBy(xpath = "//span[text()=\"Во входящие\"]")
+    protected WebElement elementInIncoming;
+
+    @FindBy(xpath = "//span[ text()=\"Удалить\"]")
+    protected WebElement buttonToDeleteLetter;
+
+    @FindBy(xpath = "//div[text()=\"Третье письмо для Page Object\"]")
+    protected WebElement bodyInIncoming;
+
+    @FindBy(xpath = "//div[@class=\"nav-folders\"]//div[text()=\"Корзина\"]")
+    protected WebElement basket;
 
     public void tabToNewLetterButton() {
         clickToButton(newLetterButton);
@@ -120,15 +151,15 @@ public class CreateAndSentPage extends BasePage {
         return wait.until(ExpectedConditions.visibilityOf(topicVer)).getAttribute("value");
     }
 
-    public String bodyToVarify() {
+
+    public String bodyToVerify() {
 
         return wait.until(ExpectedConditions.visibilityOf(bodyVerify)).getText();
     }
 
     public boolean letterNotVisible() {
 
-        Boolean letter = wait.until(ExpectedConditions.invisibilityOfElementLocated((By) verifyLetterIn));
-        System.out.println(letter + "   sdgsdgsdgs");
+        Boolean letter = wait.until(ExpectedConditions.not((ExpectedCondition<?>) verifyLetterIn));
         return letter;
     }
 
@@ -149,7 +180,55 @@ public class CreateAndSentPage extends BasePage {
         clickToButton(exitButton);
     }
 
-    public void verifyLetterInSenderFolder() {
-        wait.until(ExpectedConditions.textToBe((By) elementForVerifyInSenderFolder, "Self: Тест"));
+    public String verifyLetterInSenderFolder() {
+
+        return wait.until(ExpectedConditions.visibilityOf(elementForVerifyInSender)).getText();
+    }
+
+    public String verifyLetterInTestFolder() {
+
+        return wait.until(ExpectedConditions.visibilityOf(elementVerifyInTestF)).getText();
+    }
+
+    public String verifyEmailInTestFolder() {
+        clickToButton(elementVerifyInTestF);
+        return wait.until(ExpectedConditions.visibilityOf(emailInFolderTest)).getText();
+    }
+
+    public String verifyTopicInTestFolder() {
+        return wait.until(ExpectedConditions.visibilityOf(topicInFolderTest)).getText();
+    }
+
+    public String verifyBodyInTestFolder() {
+        return wait.until(ExpectedConditions.visibilityOf(bodyInFolderTest)).getText();
+    }
+    public void enterToIncoming(){
+        clickToButton(incomingButton);
+        clickToButton(letterToMySelf);
+    }
+    public void verifyLetterInIncoming(){
+//        System.out.println(wait.until(ExpectedConditions.visibilityOf(elementInIncoming)).getText());
+        wait.until(ExpectedConditions.textToBe((By.xpath("//span[text()=\"Во входящие\"]")),"Во входящие"));
+    }
+    public void clickToElementInIncoming(){
+        clickToButton(elementInIncoming);
+    }
+    public void deleteLetter(){
+        clickToButton(buttonToDeleteLetter);
+    }
+
+    public String verifyEmailInIncomingLetter() {
+
+        return wait.until(ExpectedConditions.visibilityOf(emailInFolderTest)).getText();
+    }
+    public String verifyBodyInIncoming() {
+        return wait.until(ExpectedConditions.visibilityOf(bodyInIncoming)).getText();
+    }
+    public void clickToBasket(){
+        clickToButton(basket);
+    }
+    public boolean verifyLetterInBasket(){
+        wait.until(ExpectedConditions.elementToBeSelected(elementInIncoming));
+        return true;
     }
 }

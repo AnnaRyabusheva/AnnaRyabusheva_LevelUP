@@ -5,7 +5,7 @@ import org.testng.asserts.SoftAssert;
 import ru.levelp.at.homework4.page.CreateAndSentPage;
 import ru.levelp.at.homework4.page.LoginPage;
 
-public class Exercise2ForPageObjectTest extends AbstractSeleniumBaseTest {
+public class Exercise3ForPageObjectTest extends AbstractSeleniumBaseTest {
 
     //3.Создать новое письмо (заполнить адресата, тему письма и тело)
     @Test
@@ -21,26 +21,29 @@ public class Exercise2ForPageObjectTest extends AbstractSeleniumBaseTest {
         //3.Создать новое письмо (заполнить адресата, тему письма и тело)
         CreateAndSentPage createAndSentPage = new CreateAndSentPage(driver);
         createAndSentPage.tabToNewLetterButton();
-        createAndSentPage.fillSender("irushik1981@mail.ru", "Тест", "Второе письмо "
+        createAndSentPage.fillSender("irushik1981@mail.ru", "Во входящие", "Третье письмо "
             + "для Page Object");
         //4.Отправить письмо
         createAndSentPage.sentLetter();
         createAndSentPage.closeWindowA();
-        //5.Verify, что письмо появилось в папке отправленные
-        createAndSentPage.clickToSenderFolder();
-        softy.assertEquals(createAndSentPage.verifyLetterInSenderFolder(), "Self: Тест");
+        //5.Verify, что письмо появилось в папке Входящие
+        createAndSentPage.enterToIncoming();
+        createAndSentPage.verifyLetterInIncoming();
 
-        //6.Verify, что письмо появилось в папке «Тест»
-        createAndSentPage.clickToFolderTest();
-        softy.assertEquals(createAndSentPage.verifyLetterInTestFolder(), "Тест");
+        //6.Verify контент, адресата и тему письма (должно совпадать с пунктом 3)
+        createAndSentPage.clickToElementInIncoming();
+        softy.assertEquals(createAndSentPage.verifyEmailInIncomingLetter(), "Ира Иванова");
+        softy.assertEquals(createAndSentPage.verifyTopicInTestFolder(), "Во входящие");
+        softy.assertEquals(createAndSentPage.verifyBodyInIncoming(), "Третье письмо для Page Object");
 
-        //7.Verify контент, адресата и тему письма (должно совпадать с пунктом 3)
+        //7.Удалить письмо
+        createAndSentPage.deleteLetter();
 
-        softy.assertEquals(createAndSentPage.verifyEmailInTestFolder(), "Ира Иванова");
-        softy.assertEquals(createAndSentPage.verifyTopicInTestFolder(), "Тест");
-        softy.assertEquals(createAndSentPage.verifyBodyInTestFolder(), "Второе письмо для Page Object");
 
-        //8.Выйти из учётной записи
+        //8.Verify что письмо появилось в папке Корзина
+        createAndSentPage.clickToBasket();
+        softy.assertTrue(createAndSentPage.verifyLetterInBasket());
+        //9.Выйти из учётной записи: выполнено в базовом классе
         createAndSentPage.exit();
         softy.assertAll();
     }

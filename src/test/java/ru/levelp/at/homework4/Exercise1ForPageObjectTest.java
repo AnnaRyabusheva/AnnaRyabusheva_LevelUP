@@ -2,8 +2,9 @@ package ru.levelp.at.homework4;
 
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import ru.levelp.at.homework4.page.LoginPage;
 import ru.levelp.at.homework4.page.CreateAndSentPage;
+import ru.levelp.at.homework4.page.LoginPage;
+
 
 public class Exercise1ForPageObjectTest extends AbstractSeleniumBaseTest {
 
@@ -11,12 +12,12 @@ public class Exercise1ForPageObjectTest extends AbstractSeleniumBaseTest {
     @Test
     public void sentAndSaveTest() {
         LoginPage loginPage = new LoginPage(driver);
-        SoftAssert softy = new SoftAssert();
         //1.Войти в почту.
         loginPage.openLoginForm();
         loginPage.loginInEmail(ConfProperties.getProperty("login"));
         loginPage.putPassword(ConfProperties.getProperty("password"));
         //2.Assert, что вход выполнен успешно.
+        SoftAssert softy = new SoftAssert();
         softy.assertEquals(loginPage.verifyTitle(), "Ира Иванова");
         //3.Создать новое письмо (заполнить адресата, тему письма и тело)
         CreateAndSentPage createAndSentPage = new CreateAndSentPage(driver);
@@ -33,12 +34,12 @@ public class Exercise1ForPageObjectTest extends AbstractSeleniumBaseTest {
         createAndSentPage.clickToLetterInDraft();
         softy.assertEquals(createAndSentPage.sender(), "irushik1981@mail.ru");
         softy.assertEquals(createAndSentPage.topicVerify(), "Тестовое письмо");
-        softy.assertEquals(createAndSentPage.bodyToVarify(), "Первое письмо для Page Object");
+        softy.assertEquals(createAndSentPage.bodyToVerify(), "Первое письмо для Page Object");
         //7.Отправить письмо
         createAndSentPage.sentLetter();
         //8.Verify, что письмо исчезло из черновиков
-//        softy.assertTrue(createAndSentPage.letterNotVisible(), String.valueOf(true));
-//        softy.assertTrue(true);        // не верно сейчас!!!
+        softy.assertEquals(createAndSentPage.letterNotVisible(), false); //что то тут не так
+
         //9. Выйти из учётной записи
         createAndSentPage.exit();
         softy.assertAll();

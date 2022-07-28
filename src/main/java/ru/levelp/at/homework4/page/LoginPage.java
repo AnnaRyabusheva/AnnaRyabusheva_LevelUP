@@ -45,7 +45,6 @@ public class LoginPage extends BasePage {
         passwordField.sendKeys(password + Keys.ENTER);
     }
 
-
     public String verifyTitle() {
         clickToButton(rightSideBar);
         return wait.until(ExpectedConditions.visibilityOf(textForVerifyTitle)).getText();
