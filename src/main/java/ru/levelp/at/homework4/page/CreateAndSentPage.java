@@ -45,7 +45,7 @@ public class CreateAndSentPage extends BasePage {
     @FindBy(xpath = "/html/body/div[10]/div/div/div[2]/div[2]/div/div/div[1]")
     protected WebElement windowOfLetterClose;
 
-    @FindBy(xpath = "//div[contains(@class, \"ph-sidebar\")]//div[contains(@data-testid, \"whiteline-account-exit\")]")
+    @FindBy(xpath = "//div[contains(@data-testid, \"whiteline-account-exit\")]")
     protected WebElement exitButton;
 
     @FindBy(xpath = "//*[@id=\"app-canvas\"]/*//span[contains(@class, \"ll-sp__normal\") and text()=\"Первое письмо"
@@ -61,6 +61,18 @@ public class CreateAndSentPage extends BasePage {
 
     @FindBy(xpath = "//div[@class=\"js-helper js-readmsg-msg\"]//div[text()='Первое письмо для Page Object']")
     protected WebElement bodyVerify;
+
+    @FindBy(xpath = "//div[contains(@class, \"nav__folder-name__txt\") and text()=\"Отправленные\"]")
+    protected WebElement senderFolder;
+
+    @FindBy(xpath = "//div[contains(@class, \"nav__folder-name__txt\") and text()=\"Тест\"]")
+    protected WebElement folderTest;
+
+    @FindBy(xpath = "//span[contains(@class, \"ph-project__user-name\")]")
+    protected WebElement folderToVerifyPerson;
+
+    @FindBy(xpath = "//span[contains(@class, \"ll-sj__normal\") and text()=\"Self: Тест\"]")
+    protected WebElement elementForVerifyInSenderFolder;
 
     public void tabToNewLetterButton() {
         clickToButton(newLetterButton);
@@ -104,7 +116,6 @@ public class CreateAndSentPage extends BasePage {
     }
 
     public String topicVerify() {
-        //        System.out.println("афвыафвыааыввы:   " + topicVer.getAttribute("value"));
 
         return wait.until(ExpectedConditions.visibilityOf(topicVer)).getAttribute("value");
     }
@@ -116,8 +127,29 @@ public class CreateAndSentPage extends BasePage {
 
     public boolean letterNotVisible() {
 
-        Boolean letter=wait.until(ExpectedConditions.invisibilityOfElementLocated((By) verifyLetterIn));
-        System.out.println("sdgadgsg s" + letter);
+        Boolean letter = wait.until(ExpectedConditions.invisibilityOfElementLocated((By) verifyLetterIn));
+        System.out.println(letter + "   sdgsdgsdgs");
         return letter;
+    }
+
+    public void closeWindowA() {
+        clickToButton(windowOfLetterClose);
+    }
+
+    public void clickToSenderFolder() {
+        clickToButton(senderFolder);
+    }
+
+    public void clickToFolderTest() {
+        clickToButton(folderTest);
+    }
+
+    public void exit() {
+        clickToButton(folderToVerifyPerson);
+        clickToButton(exitButton);
+    }
+
+    public void verifyLetterInSenderFolder() {
+        wait.until(ExpectedConditions.textToBe((By) elementForVerifyInSenderFolder, "Self: Тест"));
     }
 }
