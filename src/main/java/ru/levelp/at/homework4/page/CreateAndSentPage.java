@@ -28,7 +28,7 @@ public class CreateAndSentPage extends BasePage {
     protected WebElement buttonToSaveLetter;
 
     @FindBy(xpath = "//div[@class=\"dataset-letters__empty\"]")
-    protected WebElement emptyFolderTrash;//span[@class="octopus__title"]
+    protected WebElement emptyFolderTrash;
 
     @FindBy(xpath = "//button[@data-test-id=\"send\"]")
     protected WebElement buttonToSent;
@@ -150,16 +150,14 @@ public class CreateAndSentPage extends BasePage {
         return wait.until(ExpectedConditions.visibilityOf(topicVer)).getAttribute("value");
     }
 
-
     public String bodyToVerify() {
 
         return wait.until(ExpectedConditions.visibilityOf(bodyVerify)).getText();
     }
 
-    public String letterNotVisible(){
+    public String letterNotVisible() {
         return wait.until(ExpectedConditions.visibilityOf(emptyFolderTrash)).getText();
     }
-
 
     public void closeWindowA() {
         clickToButton(windowOfLetterClose);
@@ -200,17 +198,21 @@ public class CreateAndSentPage extends BasePage {
     public String verifyBodyInTestFolder() {
         return wait.until(ExpectedConditions.visibilityOf(bodyInFolderTest)).getText();
     }
-    public void enterToIncoming(){
+
+    public void enterToIncoming() {
         clickToButton(incomingButton);
         clickToButton(letterToMySelf);
     }
-    public void verifyLetterInIncoming(){
-        wait.until(ExpectedConditions.textToBe((By.xpath("//span[text()=\"Во входящие\"]")),"Во входящие"));
+
+    public void verifyLetterInIncoming() {
+        wait.until(ExpectedConditions.textToBe((By.xpath("//span[text()=\"Во входящие\"]")), "Во входящие"));
     }
-    public void clickToElementInIncoming(){
+
+    public void clickToElementInIncoming() {
         clickToButton(elementInIncoming);
     }
-    public void deleteLetter(){
+
+    public void deleteLetter() {
         clickToButton(buttonToDeleteLetter);
     }
 
@@ -218,14 +220,16 @@ public class CreateAndSentPage extends BasePage {
 
         return wait.until(ExpectedConditions.visibilityOf(emailInFolderTest)).getText();
     }
+
     public String verifyBodyInIncoming() {
         return wait.until(ExpectedConditions.visibilityOf(bodyInIncoming)).getText();
     }
-    public void clickToBasket(){
+
+    public void clickToBasket() {
         clickToButton(basket);
     }
-    public String verifyLetterInBasket(){
-        return wait.until(ExpectedConditions.visibilityOf(elementInIncoming)).getText();
 
+    public String verifyLetterInBasket() {
+        return wait.until(ExpectedConditions.visibilityOf(elementInIncoming)).getText();
     }
 }
