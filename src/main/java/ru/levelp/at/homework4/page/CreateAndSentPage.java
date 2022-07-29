@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CreateAndSentPage extends BasePage {
@@ -28,8 +27,8 @@ public class CreateAndSentPage extends BasePage {
     @FindBy(xpath = "//button[@data-test-id=\"save\"]")
     protected WebElement buttonToSaveLetter;
 
-    @FindBy(xpath = "//button[@data-test-id=\"send\"]")
-    protected WebElement elementForSent;
+    @FindBy(xpath = "//div[@class=\"dataset-letters__empty\"]")
+    protected WebElement emptyFolderTrash;//span[@class="octopus__title"]
 
     @FindBy(xpath = "//button[@data-test-id=\"send\"]")
     protected WebElement buttonToSent;
@@ -157,11 +156,10 @@ public class CreateAndSentPage extends BasePage {
         return wait.until(ExpectedConditions.visibilityOf(bodyVerify)).getText();
     }
 
-    public boolean letterNotVisible() {
-
-        Boolean letter = wait.until(ExpectedConditions.not((ExpectedCondition<?>) verifyLetterIn));
-        return letter;
+    public String letterNotVisible(){
+        return wait.until(ExpectedConditions.visibilityOf(emptyFolderTrash)).getText();
     }
+
 
     public void closeWindowA() {
         clickToButton(windowOfLetterClose);
@@ -207,7 +205,6 @@ public class CreateAndSentPage extends BasePage {
         clickToButton(letterToMySelf);
     }
     public void verifyLetterInIncoming(){
-//        System.out.println(wait.until(ExpectedConditions.visibilityOf(elementInIncoming)).getText());
         wait.until(ExpectedConditions.textToBe((By.xpath("//span[text()=\"Во входящие\"]")),"Во входящие"));
     }
     public void clickToElementInIncoming(){
@@ -227,8 +224,8 @@ public class CreateAndSentPage extends BasePage {
     public void clickToBasket(){
         clickToButton(basket);
     }
-    public boolean verifyLetterInBasket(){
-        wait.until(ExpectedConditions.elementToBeSelected(elementInIncoming));
-        return true;
+    public String verifyLetterInBasket(){
+        return wait.until(ExpectedConditions.visibilityOf(elementInIncoming)).getText();
+
     }
 }

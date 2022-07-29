@@ -5,7 +5,6 @@ import org.testng.asserts.SoftAssert;
 import ru.levelp.at.homework4.page.CreateAndSentPage;
 import ru.levelp.at.homework4.page.LoginPage;
 
-
 public class Exercise1ForPageObjectTest extends AbstractSeleniumBaseTest {
 
     //3.Создать новое письмо (заполнить адресата, тему письма и тело)
@@ -37,8 +36,11 @@ public class Exercise1ForPageObjectTest extends AbstractSeleniumBaseTest {
         softy.assertEquals(createAndSentPage.bodyToVerify(), "Первое письмо для Page Object");
         //7.Отправить письмо
         createAndSentPage.sentLetter();
+        createAndSentPage.closeWindowA();
         //8.Verify, что письмо исчезло из черновиков
-        softy.assertEquals(createAndSentPage.letterNotVisible(), false); //что то тут не так
+
+        createAndSentPage.draftButtonClick();
+        softy.assertTrue(!createAndSentPage.letterNotVisible().isEmpty());
 
         //9. Выйти из учётной записи
         createAndSentPage.exit();
