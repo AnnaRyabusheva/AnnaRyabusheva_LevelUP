@@ -2,6 +2,7 @@ package ru.levelp.at.homework4;
 
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import ru.levelp.at.homework4.page.BasePage;
 import ru.levelp.at.homework4.page.CreateAndSentPage;
 import ru.levelp.at.homework4.page.LoginPage;
 
@@ -20,14 +21,15 @@ public class Exercise1ForPageObjectTest extends AbstractSeleniumBaseTest {
         softy.assertEquals(loginPage.verifyTitle(), "Ира Иванова");
         //3.Создать новое письмо (заполнить адресата, тему письма и тело)
         CreateAndSentPage createAndSentPage = new CreateAndSentPage(driver);
-        createAndSentPage.tabToNewLetterButton();
+        BasePage basePage = new BasePage(driver);
+        basePage.tabToNewLetterButton();
         createAndSentPage.fillSender("irushik1981@mail.ru", "Тестовое письмо", "Первое письмо "
             + "для Page Object");
         //4.Сохранить его как черновик
         createAndSentPage.saveLetter();
         createAndSentPage.exitLetter();
         //5.Verify, что письмо сохранено в черновиках
-        createAndSentPage.draftButtonClick();
+        basePage.draftButtonClick();
         softy.assertTrue(createAndSentPage.verifyLetterInDraft());
         //6.Verify контент, адресата и тему письма (должно совпадать с пунктом 3
         createAndSentPage.clickToLetterInDraft();
@@ -39,11 +41,11 @@ public class Exercise1ForPageObjectTest extends AbstractSeleniumBaseTest {
         createAndSentPage.closeWindowA();
         //8.Verify, что письмо исчезло из черновиков
 
-        createAndSentPage.draftButtonClick();
+        basePage.draftButtonClick();
         softy.assertTrue(!createAndSentPage.letterNotVisible().isEmpty());
 
         //9. Выйти из учётной записи
-        createAndSentPage.exit();
+        basePage.exit();
         softy.assertAll();
     }
 }

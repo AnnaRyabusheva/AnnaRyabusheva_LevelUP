@@ -37,12 +37,12 @@ public class LoginPage extends BasePage {
 
     public void loginInEmail(String login) {
 
-        loginField.sendKeys(login + Keys.ENTER);
+        wait.until(ExpectedConditions.visibilityOf(loginField)).sendKeys(login + Keys.ENTER);
     }
 
     public void putPassword(String password) {
         clickToButton(passwordField);
-        passwordField.sendKeys(password + Keys.ENTER);
+        wait.until(ExpectedConditions.visibilityOf(passwordField)).sendKeys(password + Keys.ENTER);
     }
 
     public String verifyTitle() {

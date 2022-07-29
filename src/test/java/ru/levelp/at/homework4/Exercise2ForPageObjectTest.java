@@ -2,6 +2,7 @@ package ru.levelp.at.homework4;
 
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import ru.levelp.at.homework4.page.BasePage;
 import ru.levelp.at.homework4.page.CreateAndSentPage;
 import ru.levelp.at.homework4.page.LoginPage;
 
@@ -20,7 +21,8 @@ public class Exercise2ForPageObjectTest extends AbstractSeleniumBaseTest {
         softy.assertEquals(loginPage.verifyTitle(), "Ира Иванова");
         //3.Создать новое письмо (заполнить адресата, тему письма и тело)
         CreateAndSentPage createAndSentPage = new CreateAndSentPage(driver);
-        createAndSentPage.tabToNewLetterButton();
+        BasePage basePage = new BasePage(driver);
+        basePage.tabToNewLetterButton();
         createAndSentPage.fillSender("irushik1981@mail.ru", "Тест", "Второе письмо "
             + "для Page Object");
         //4.Отправить письмо
@@ -41,7 +43,7 @@ public class Exercise2ForPageObjectTest extends AbstractSeleniumBaseTest {
         softy.assertEquals(createAndSentPage.verifyBodyInTestFolder(), "Второе письмо для Page Object");
 
         //8.Выйти из учётной записи
-        createAndSentPage.exit();
+        basePage.exit();
         softy.assertAll();
     }
 }

@@ -2,6 +2,7 @@ package ru.levelp.at.homework4;
 
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import ru.levelp.at.homework4.page.BasePage;
 import ru.levelp.at.homework4.page.CreateAndSentPage;
 import ru.levelp.at.homework4.page.LoginPage;
 
@@ -20,14 +21,16 @@ public class Exercise3ForPageObjectTest extends AbstractSeleniumBaseTest {
         softy.assertEquals(loginPage.verifyTitle(), "Ира Иванова");
         //3.Создать новое письмо (заполнить адресата, тему письма и тело)
         CreateAndSentPage createAndSentPage = new CreateAndSentPage(driver);
-        createAndSentPage.tabToNewLetterButton();
+        BasePage basePage = new BasePage(driver);
+
+        basePage.tabToNewLetterButton();
         createAndSentPage.fillSender("irushik1981@mail.ru", "Во входящие", "Третье письмо "
             + "для Page Object");
         //4.Отправить письмо
         createAndSentPage.sentLetter();
         createAndSentPage.closeWindowA();
         //5.Verify, что письмо появилось в папке Входящие
-        createAndSentPage.enterToIncoming();
+        basePage.enterToIncoming();
         createAndSentPage.verifyLetterInIncoming();
 
         //6.Verify контент, адресата и тему письма (должно совпадать с пунктом 3)
@@ -39,13 +42,12 @@ public class Exercise3ForPageObjectTest extends AbstractSeleniumBaseTest {
         //7.Удалить письмо
         createAndSentPage.deleteLetter();
 
-
         //8.Verify что письмо появилось в папке Корзина
-        createAndSentPage.clickToBasket();
+        basePage.clickToBasket();
         softy.assertTrue(!createAndSentPage.verifyLetterInBasket().isEmpty());
 
         //9.Выйти из учётной записи: выполнено в базовом классе
-        createAndSentPage.exit();
+        basePage.exit();
         softy.assertAll();
     }
 }

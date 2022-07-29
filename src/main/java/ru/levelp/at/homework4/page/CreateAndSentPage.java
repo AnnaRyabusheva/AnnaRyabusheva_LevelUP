@@ -12,9 +12,6 @@ public class CreateAndSentPage extends BasePage {
         super(driver);
     }
 
-    @FindBy(xpath = "//span[contains(@class, \"compose-button__txt\") and text()=\"Написать письмо\"]")
-    protected WebElement newLetterButton;
-
     @FindBy(xpath = "//input[@type=\"text\"]")
     protected WebElement senderField;
 
@@ -29,12 +26,6 @@ public class CreateAndSentPage extends BasePage {
 
     @FindBy(xpath = "//div[@class=\"dataset-letters__empty\"]")
     protected WebElement emptyFolderTrash;
-
-    @FindBy(xpath = "//button[@data-test-id=\"send\"]")
-    protected WebElement buttonToSent;
-
-    @FindBy(xpath = "//div[contains(@class, \"nav__folder-name__txt\") and text()=\"Черновики\"]")
-    protected WebElement draftButton;
 
     @FindBy(xpath = "//div[contains(@class, \"focus-zone\")]//button[@data-test-id]")
     protected WebElement sentButton;
@@ -86,12 +77,6 @@ public class CreateAndSentPage extends BasePage {
     @FindBy(xpath = "//div[@class=\"js-helper js-readmsg-msg\"]//div[text()=\"Второе письмо для Page Object\"]")
     protected WebElement bodyInFolderTest;
 
-    @FindBy(xpath = "//a[@href=\"/inbox/\"]")
-    protected WebElement incomingButton;
-
-    @FindBy(xpath = "//div[@class=\"mt-h-c__item mt-h-c__item_title\"]")
-    protected WebElement letterToMySelf;
-
     @FindBy(xpath = "//span[text()=\"Во входящие\"]")
     protected WebElement elementInIncoming;
 
@@ -100,13 +85,6 @@ public class CreateAndSentPage extends BasePage {
 
     @FindBy(xpath = "//div[text()=\"Третье письмо для Page Object\"]")
     protected WebElement bodyInIncoming;
-
-    @FindBy(xpath = "//div[@class=\"nav-folders\"]//div[text()=\"Корзина\"]")
-    protected WebElement basket;
-
-    public void tabToNewLetterButton() {
-        clickToButton(newLetterButton);
-    }
 
     public void fillSender(String sender, String topic, String bodyOfLetter) {
         wait.until(ExpectedConditions.visibilityOf(senderField)).sendKeys(sender);
@@ -120,11 +98,6 @@ public class CreateAndSentPage extends BasePage {
 
     public void exitLetter() {
         clickToButton(closeLetterWindow);
-    }
-
-    public void draftButtonClick() {
-        clickToButton(draftButton);
-        wait.until(ExpectedConditions.elementToBeClickable(draftButton));
     }
 
     public boolean verifyLetterInDraft() {
@@ -223,10 +196,6 @@ public class CreateAndSentPage extends BasePage {
 
     public String verifyBodyInIncoming() {
         return wait.until(ExpectedConditions.visibilityOf(bodyInIncoming)).getText();
-    }
-
-    public void clickToBasket() {
-        clickToButton(basket);
     }
 
     public String verifyLetterInBasket() {
