@@ -42,7 +42,7 @@ public class Exercise3ForPageObjectTest extends AbstractSeleniumBaseTest {
 
         //8.Verify что письмо появилось в папке Корзина
         createAndSentPage.clickToBasket();
-        softy.assertTrue(createAndSentPage.verifyLetterInBasket().isEmpty());
+        softy.assertTrue(!createAndSentPage.verifyLetterInBasket().isEmpty());
 //        softy.assertTrue(createAndSentPage.verifyLetterInBasket());
         //9.Выйти из учётной записи: выполнено в базовом классе
         createAndSentPage.exit();
