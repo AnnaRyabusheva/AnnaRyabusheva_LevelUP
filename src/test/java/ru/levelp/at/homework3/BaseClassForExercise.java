@@ -30,7 +30,7 @@ public class BaseClassForExercise {
         driver.navigate().to("https://mail.ru/");
 
         wait.until(ExpectedConditions.elementToBeClickable(
-            By.xpath("//div[@id=\"mailbox\"]/div/button[@data-testid=\"enter-mail-primary\"]"))).click();
+            By.xpath("//div/button[@data-testid=\"enter-mail-primary\"]"))).click();
 
         WebElement frame = wait.until(ExpectedConditions.elementToBeClickable(
             By.xpath("//div/iframe[@class=\"ag-popup__frame__layout__iframe\"]")));
@@ -39,7 +39,6 @@ public class BaseClassForExercise {
 
         WebElement sentEmail = wait.until(ExpectedConditions.elementToBeClickable(
             By.xpath("//input[@name='username']")));
-        //        driver.findElement(By.xpath("//input[@name='username']"))
         sentEmail.sendKeys("irushik1981" + Keys.ENTER);
 
         WebElement passwordField = wait.until(ExpectedConditions.elementToBeClickable(
@@ -50,7 +49,7 @@ public class BaseClassForExercise {
         //2.Assert, что вход выполнен успешно
 
         wait.until(ExpectedConditions.elementToBeClickable(
-            By.xpath("//*[@id=\"ph-whiteline\"]//div[@aria-label=\"irushik1981@mail.ru\"]"))).click();
+            By.xpath("//div[@aria-label=\"irushik1981@mail.ru\"]"))).click();
 
         String txtUserName = wait.until(ExpectedConditions.elementToBeClickable(
             By.xpath("//*[@aria-label=\"Ира Иванова\"]"))).getText();
@@ -63,10 +62,10 @@ public class BaseClassForExercise {
     public void tearDown() {
         //9. Выйти из учётной записи
         WebElement buttonClick = wait.until(ExpectedConditions.elementToBeClickable(
-            By.xpath("//*[@id=\"ph-whiteline\"]//div[@aria-label=\"irushik1981@mail.ru\"]")));
+            By.xpath("//div[@aria-label=\"irushik1981@mail.ru\"]")));
         buttonClick.click();
         WebElement buttonExit = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
-            "//div[contains(@class, \"ph-sidebar\")]//div[contains(@data-testid, \"whiteline-account-exit\")]")));
+            "//div[contains(@data-testid, \"whiteline-account-exit\")]")));
         buttonExit.click();
         driver.quit();
     }

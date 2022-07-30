@@ -22,7 +22,7 @@ public class Exercise1Test extends BaseClassForExercise {
         colum.sendKeys("irushik1981@mail.ru");
 
         WebElement tem = wait.until(ExpectedConditions.elementToBeClickable(
-            By.xpath("//div[@class=\"container--3QXHv\"]//input[@name=\"Subject\"]")));
+            By.xpath("//input[@name=\"Subject\"]")));
         tem.click();
         tem.sendKeys("Тестовое письмо");
 
@@ -77,8 +77,11 @@ public class Exercise1Test extends BaseClassForExercise {
         WebElement sendButton = driver.findElement(By.xpath("//button[@data-test-id=\"send\"]"));
         sendButton.click();
 
-        driver.findElement(By.xpath("/html/body/div[10]/div/div/div[2]/div[2]/div/div/div[1]")).click();
+        driver.findElement(By.xpath("//span[@title=\"Закрыть\"]")).click();
         //8.Verify, что письмо исчезло из черновиков
+        String verifyElementInDraft = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class="
+            + "\"dataset-letters__empty\"]"))).getText();
+        softly.assertThat(!verifyElementInDraft.isEmpty());
 
         //9.Verify, что письмо появилось в папке отправленные
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href=\"/sent/\"]"))).click();

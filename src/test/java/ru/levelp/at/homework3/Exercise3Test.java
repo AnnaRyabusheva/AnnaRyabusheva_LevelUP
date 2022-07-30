@@ -35,7 +35,7 @@ public class Exercise3Test extends BaseClassForExercise {
             By.xpath("//div[contains(@class, 'footer')]/div/div/div[@data-test-id=\"underlay-wrapper\"]"));
         buttonSent.click();
 
-        driver.findElement(By.xpath("/html/body/div[10]/div/div/div[2]/div[2]/div/div/div[1]")).click();
+        driver.findElement(By.xpath("//span[@title=\"Закрыть\"]")).click();
 
         //5.Verify, что письмо появилось в папке Входящие
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href=\"/inbox/\"]"))).click();
@@ -47,11 +47,6 @@ public class Exercise3Test extends BaseClassForExercise {
             + "and text()=\"3е задание по Selenium\"]")).click();
         //6.Verify контент, адресата и тему письма (должно совпадать с пунктом 3)
 
-        //        String checkOfBodyLetter =
-        //            driver.findElement(By.xpath("//*[@id=\"style_16583176301231982780_BODY\"]/div/div[1]"))
-        //                  .getText();
-        //        softly.assertThat(checkOfBodyLetter)
-        //              .contains("Поле тело письма заполнено");
 
         String addressLetter = driver.findElement(By.xpath(
                                          "//div[@class=\"letter__author\"]/span[@title=\"irushik1981@mail.ru\"]"))
@@ -70,7 +65,7 @@ public class Exercise3Test extends BaseClassForExercise {
         //7.Удалить письмо
 
         wait.until(ExpectedConditions.elementToBeClickable(
-            By.xpath("//div[@class=\"layout__main-frame\"]//span[@data-title-shortcut]/span"))).click();
+            By.xpath("//span[ text()=\"Удалить\"]"))).click();
 
         //8.Verify что письмо появилось в папке Корзина
         driver.findElement(By.xpath("//div[contains(@class, \"nav__folder-name__txt\") and text()=\"Корзина\"]"))

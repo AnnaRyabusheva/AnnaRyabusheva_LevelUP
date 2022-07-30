@@ -35,7 +35,7 @@ public class Exercise2Test extends BaseClassForExercise {
         WebElement buttonSent = driver.findElement(
             By.xpath("//div[contains(@class, 'footer')]/div/div/div[@data-test-id=\"underlay-wrapper\"]"));
         buttonSent.click();
-
+        driver.findElement(By.xpath("//span[@title=\"Закрыть\"]")).click();
         //5.Verify, что письмо появилось в папке отправленные
 
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href=\"/sent/\"]"))).click();
@@ -51,7 +51,7 @@ public class Exercise2Test extends BaseClassForExercise {
         //6.Verify, что письмо появилось в папке «Тест»
 
         Actions action = new Actions(driver);
-        WebElement link = driver.findElement(By.xpath("//*[@id=\"sideBarContent\"]//div[contains(@class, "
+        WebElement link = driver.findElement(By.xpath("//div[contains(@class,"
             + "\"nav__folder-name__txt\") and text()=\"Тест\"]"));
         action.doubleClick(link).perform();
 
