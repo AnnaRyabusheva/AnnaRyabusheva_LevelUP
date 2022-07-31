@@ -1,4 +1,4 @@
-package ru.levelp.at.homework4.page;
+package ru.levelp.at.homework5.step;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -33,7 +33,7 @@ public class CreateAndSentPage extends BasePage {
     @FindBy(xpath = "//div//button[@title=\"Закрыть\"]")
     protected WebElement closeLetterWindow;
 
-    @FindBy(xpath = "//span[@title=\"Закрыть\"]")
+    @FindBy(xpath = "/html/body/div[10]/div/div/div[2]/div[2]/div/div/div[1]")
     protected WebElement windowOfLetterClose;
 
     @FindBy(xpath = "//div[contains(@data-testid, \"whiteline-account-exit\")]")
