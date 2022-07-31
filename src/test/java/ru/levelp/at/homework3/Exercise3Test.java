@@ -32,7 +32,7 @@ public class Exercise3Test extends BaseClassForExercise {
         //4.Отправить письмо
 
         WebElement buttonSent = driver.findElement(
-            By.xpath("//div[contains(@class, 'footer')]/div/div/div[@data-test-id=\"underlay-wrapper\"]"));
+            By.xpath("//button[@data-test-id=\"send\"]"));
         buttonSent.click();
 
         driver.findElement(By.xpath("//span[@title=\"Закрыть\"]")).click();

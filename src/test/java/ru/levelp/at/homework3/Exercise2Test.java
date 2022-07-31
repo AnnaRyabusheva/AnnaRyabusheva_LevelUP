@@ -33,7 +33,7 @@ public class Exercise2Test extends BaseClassForExercise {
         //4.Отправить письмо
 
         WebElement buttonSent = driver.findElement(
-            By.xpath("//div[contains(@class, 'footer')]/div/div/div[@data-test-id=\"underlay-wrapper\"]"));
+            By.xpath("//button[@data-test-id=\"send\"]"));
         buttonSent.click();
         driver.findElement(By.xpath("//span[@title=\"Закрыть\"]")).click();
         //5.Verify, что письмо появилось в папке отправленные
@@ -51,8 +51,8 @@ public class Exercise2Test extends BaseClassForExercise {
         //6.Verify, что письмо появилось в папке «Тест»
 
         Actions action = new Actions(driver);
-        WebElement link = driver.findElement(By.xpath("//div[contains(@class,"
-            + "\"nav__folder-name__txt\") and text()=\"Тест\"]"));
+        WebElement link = driver.findElement(By.xpath("//div[text()=\"Тест\"]"));
+
         action.doubleClick(link).perform();
 
         //7.Verify контент, адресата и тему письма (должно совпадать с пунктом 3)
