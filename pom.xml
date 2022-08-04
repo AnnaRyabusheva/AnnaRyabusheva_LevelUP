@@ -16,7 +16,7 @@
     <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
     <checkstyle.version>9.3</checkstyle.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <testng.version>7.6.0</testng.version>
+    <testng.version>7.6.1</testng.version>
     <selenium-java.version>4.3.0</selenium-java.version>
     <aspectj.version>1.9.8</aspectj.version>
     <webdrivermanager.version>5.2.1</webdrivermanager.version>
@@ -27,11 +27,20 @@
   </properties>
 
   <profiles>
+    <profile>
+      <id>homework5-all-exercise-test-suite</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/test/resources/ru.levelp.at.homework5/AllExerciseForHW5TestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
 
     <profile>
       <id>homework3-all-exercise-test-suite</id>
       <activation>
-        <activeByDefault>true</activeByDefault>
+        <activeByDefault>false</activeByDefault>
       </activation>
       <properties>
         <suite.xml.name>${project.basedir}/src/test/resources/ru.levelp.at.homework3/AllExerciseForHW3TestSuite.xml</suite.xml.name>
