@@ -16,21 +16,32 @@
     <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
     <checkstyle.version>9.3</checkstyle.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <testng.version>7.6.0</testng.version>
-    <selenium-java.version>4.2.1</selenium-java.version>
+    <testng.version>7.6.1</testng.version>
+    <selenium-java.version>4.3.0</selenium-java.version>
     <aspectj.version>1.9.8</aspectj.version>
-    <webdrivermanager.version>5.2.0</webdrivermanager.version>
+    <webdrivermanager.version>5.2.1</webdrivermanager.version>
     <assertj-core.version>3.23.1</assertj-core.version>
 
+<!--    <jcl-over-slf4j.version>1.7.5</jcl-over-slf4j.version>-->
 
   </properties>
 
   <profiles>
 
     <profile>
-      <id>homework3-all-exercise-test-suite</id>
+      <id>homework4-all-exercise-test-suite</id>
       <activation>
         <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/test/resources/ru.levelp.at.homework4/AllExerciseForHW4StepsTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>homework3-all-exercise-test-suite</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
       </activation>
       <properties>
         <suite.xml.name>${project.basedir}/src/test/resources/ru.levelp.at.homework3/AllExerciseForHW3TestSuite.xml</suite.xml.name>
@@ -123,6 +134,7 @@
       <version>${assertj-core.version}</version>
       <scope>test</scope>
     </dependency>
+
 
   </dependencies>
   <build>
