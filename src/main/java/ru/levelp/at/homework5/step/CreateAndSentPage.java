@@ -86,6 +86,9 @@ public class CreateAndSentPage extends BasePage {
     @FindBy(xpath = "//div[text()=\"Третье письмо для Page Object\"]")
     protected WebElement bodyInIncoming;
 
+    @FindBy(xpath = "//div[contains(@class,\"ph-project-promo-close-icon\")]")
+    protected WebElement windowFly;
+
     public void fillSender(String sender, String topic, String bodyOfLetter) {
         wait.until(ExpectedConditions.visibilityOf(senderField)).sendKeys(sender);
         wait.until(ExpectedConditions.visibilityOf(topicField)).sendKeys(topic);
@@ -200,5 +203,9 @@ public class CreateAndSentPage extends BasePage {
 
     public String verifyLetterInBasket() {
         return wait.until(ExpectedConditions.visibilityOf(elementInIncoming)).getText();
+    }
+
+    public void clickToFlyWindow() {
+        clickToButton(windowFly);
     }
 }

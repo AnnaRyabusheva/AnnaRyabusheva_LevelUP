@@ -1,0 +1,9 @@
+<suite name="All Exercise For HW 5 Test Suit">
+
+  <test name="All Exercise For HW 5 Test">
+    <packages>
+      <package name="ru.levelp.at.homework5.steps.tests"/>
+    </packages>
+  </test>
+
+</suite>
